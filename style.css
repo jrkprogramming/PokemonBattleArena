@@ -4,6 +4,7 @@ button {
   display:grid;
   grid-column: 1fr 1fr 1fr;
   border: 1px solid red;
+  justify-content: center;
 
 }
 
@@ -37,3 +38,7 @@ button {
   margin: 100px;
 }
 
+nav button{
+  display: flex;
+  justify-content: center;
+}

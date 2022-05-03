@@ -10,8 +10,6 @@ class trainers {
     selectUserPokemon = async () => {
 
         let pokemonList = [];
-
-            // alert('Choose Your Pokemon')
  
         const M = 151;
         // let pokemonList = Array.from({length: M}, (_, index) => index + 1);
@@ -138,6 +136,7 @@ class trainers {
 
         let userPickField = document.createElement('div')
         document.body.append(userPickField)
+
         let moveSubmitBtn = document.createElement('button')
         moveSubmitBtn.innerHTML = `ADD ${curPoke.name.toUpperCase()} TO YOUR PARTY`
         moveSubmitBtn.style.padding = '10px';
@@ -207,16 +206,13 @@ class trainers {
             selectList4.appendChild(option4);
         }
 
-
         let moveSubmits = [];
         let displayMoveSubmits = [];
         
 
         moveSubmitBtn.addEventListener("click", function (e) {
 
-            console.dir(selectList1)
-            console.log(selectList1)
-            console.log(selectList1.value)
+
             moveSubmits.push(selectList1.value, selectList2.value, selectList3.value, selectList4.value);
 
             moveSubmits.forEach(name => {
@@ -227,9 +223,6 @@ class trainers {
                     })
             })
 
-            // console.log(moveSubmits)
-            // console.log(displayMoveSubmits)
-
             for (let i = 0; i < 4; i++) {
 
                 curPoke.moveSet.push(displayMoveSubmits[i])
@@ -238,7 +231,8 @@ class trainers {
             
             console.log(curPoke)
             jrk.pokemonParty.push(curPoke)
-            
+
+    
         })
 
         
@@ -277,8 +271,6 @@ class trainers {
     selectCPUPokemon = () => {
 
         let pokemonList = [];
-
-        alert("Choose Your Opponent's Pokemon")
      
         const M = 151;
         // let pokemonList = Array.from({length: M}, (_, index) => index + 1);
@@ -394,6 +386,7 @@ class trainers {
 
         let userPickField = document.createElement('div')
         document.body.append(userPickField)
+        
         let moveSubmitBtn = document.createElement('button')
         moveSubmitBtn.innerHTML = `ADD ${curPoke.name.toUpperCase()} TO CPU PARTY`
         moveSubmitBtn.style.padding = '10px';
@@ -472,9 +465,6 @@ class trainers {
 
             // let checkAllMoves = allMovesList.find(x => x.name === options.value.name)
 
-            console.dir(selectList1)
-            console.log(selectList1)
-            console.log(selectList1.value)
             moveSubmits.push(selectList1.value, selectList2.value, selectList3.value, selectList4.value);
 
             moveSubmits.forEach(name => {
@@ -523,10 +513,96 @@ class trainers {
 
     displayUserParty = () => {
         console.log(this.pokemonParty)
+    
+        if (this.pokemonParty.length === 0) {
+            alert('You have not selected any Pokemon!')
+        } else {
+
+
+            let showPokemonParty = document.querySelector('.displayParty')
+            
+            let userPartyHead = document.createElement('h1')
+            userPartyHead.innerHTML = 'YOUR POKEMON PARTY:'
+            showPokemonParty.append(userPartyHead)
+
+            for (let i = 0; i < this.pokemonParty.length; i++) {
+
+            let userPartyDisplayName = document.createElement('h2')
+            userPartyDisplayName.innerHTML = `POKEMON NAME: ${this.pokemonParty[i].name.toUpperCase()}`
+            showPokemonParty.append(userPartyDisplayName)
+
+            let showUserType = document.createElement('h4')
+            showUserType.innerHTML = `TYPE: ${this.pokemonParty[i].type.toUpperCase()}`
+            userPartyDisplayName.append(showUserType)
+
+
+            let showMoveType1 = document.createElement('h5')
+            showMoveType1.innerHTML = `Move 1: ${this.pokemonParty[i].moveSet[0].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType1)
+
+            let showMoveType2 = document.createElement('h5')
+            showMoveType2.innerHTML = `Move 2: ${this.pokemonParty[i].moveSet[1].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType2)
+
+            let showMoveType3 = document.createElement('h5')
+            showMoveType3.innerHTML = `Move 3: ${this.pokemonParty[i].moveSet[2].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType3)
+
+            let showMoveType4 = document.createElement('h5')
+            showMoveType4.innerHTML = `Move 4: ${this.pokemonParty[i].moveSet[3].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType4)
+
+            }
+        }
+
+
+
+
     }
     
     displayCPUParty = () => {
         console.log(this.computerParty)
+
+        if (this.computerParty.length === 0) {
+            alert('You have not selected any Pokemon!')
+        } else {
+
+
+            let showPokemonParty = document.querySelector('.displayParty')
+            
+            let cpuPartyHead = document.createElement('h1')
+            cpuPartyHead.innerHTML = 'COMPUTER POKEMON PARTY:'
+            showPokemonParty.append(cpuPartyHead)
+            
+            for (let i = 0; i < this.computerParty.length; i++) {
+
+            let cpuPartyDisplayName = document.createElement('h2')
+            cpuPartyDisplayName.innerHTML = `POKEMON NAME: ${this.computerParty[i].name.toUpperCase()}`
+            showPokemonParty.append(cpuPartyDisplayName)
+
+            let showCPUType = document.createElement('h4')
+            showCPUType.innerHTML = `TYPE: ${this.computerParty[i].type.toUpperCase()}`
+            cpuPartyDisplayName.append(showCPUType)
+
+
+            let showMoveType1 = document.createElement('h5')
+            showMoveType1.innerHTML = `Move 1: ${this.computerParty[i].moveSet[0].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType1)
+
+            let showMoveType2 = document.createElement('h5')
+            showMoveType2.innerHTML = `Move 2: ${this.computerParty[i].moveSet[1].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType2)
+
+            let showMoveType3 = document.createElement('h5')
+            showMoveType3.innerHTML = `Move 3: ${this.computerParty[i].moveSet[2].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType3)
+
+            let showMoveType4 = document.createElement('h5')
+            showMoveType4.innerHTML = `Move 4: ${this.computerParty[i].moveSet[3].name.toUpperCase()}`
+            showPokemonParty.append(showMoveType4)
+
+            }
+        }
     }
 
     calculateUserTypeMultiplier = (moveIndex) => {
@@ -839,9 +915,6 @@ class trainers {
 
     battle = () => {
 
-        let pokemonSelectScreen = document.querySelector('#pokemonSelectScreen')
-        pokemonSelectScreen.style.display = 'none';
-
         let textBox = document.createElement('div')
         document.body.append(textBox)
         let welcomeText = document.createElement('h1')
@@ -872,7 +945,6 @@ class trainers {
 
 
 const jrk = new trainers('User')
-alert(`Select Your Pokemon to begin!`)
 
 // Grabs Pokemon Data from PokeAPI
 pokemon = [];
@@ -904,9 +976,7 @@ async function getMoves() {
         let response = await fetch(`https://pokeapi.co/api/v2/move/${i}`)
         let move = await response.json()
         allMovesList.push({"name": move.name, "moveType": move.type.name,"accuracy": move.accuracy, "power": move.power})
-        }
-        // console.log(allMovesList)
-        // console.log(allMovesList[0].power)
+    }
 }
 getMoves()
 
@@ -1246,29 +1316,22 @@ let TYPE_CHART = {
 
 // Standard buttons here:
 
-// Select User Pokemon
+let navBar = document.querySelector('nav')
+
+
+// Select Pokemon
 
 let selectYourPokemonBtn = document.createElement('BUTTON')
 selectYourPokemonBtn.innerHTML = 'SELECT POKEMON';
 selectYourPokemonBtn.style.padding = '10px';
 selectYourPokemonBtn.style.marginRight = '20px';
 
-document.body.append(selectYourPokemonBtn)
+navBar.append(selectYourPokemonBtn)
 
 selectYourPokemonBtn.addEventListener('click', function(e) {
     jrk.selectUserPokemon()
     jrk.selectCPUPokemon()
 })
-
-// Select CPU Pokemon
-// let selectComputerPokemonBtn = document.createElement('BUTTON')
-// selectComputerPokemonBtn.innerHTML = 'SELECT CPU POKEMON';
-// selectComputerPokemonBtn.style.padding = '10px';
-// selectComputerPokemonBtn.style.marginRight = '20px';
-
-// document.body.append(selectComputerPokemonBtn)
-
-// selectComputerPokemonBtn.addEventListener('click', jrk.selectCPUPokemon)
 
 // Battle
 
@@ -1277,7 +1340,7 @@ battleButton.innerHTML = 'BATTLE';
 battleButton.style.padding = '10px';
 battleButton.style.marginRight = '20px';
 
-document.body.append(battleButton)
+navBar.append(battleButton)
 
 battleButton.addEventListener('click', jrk.battle)
 
@@ -1288,7 +1351,7 @@ displayUserParty.innerHTML = 'DISPLAY YOUR PARTY';
 displayUserParty.style.padding = '10px';
 displayUserParty.style.marginRight = '20px';
 
-document.body.append(displayUserParty)
+navBar.append(displayUserParty)
 
 displayUserParty.addEventListener('click', jrk.displayUserParty)
 
@@ -1299,11 +1362,6 @@ displayComputerParty.innerHTML = 'DISPLAY CPU PARTY';
 displayComputerParty.style.padding = '10px';
 displayComputerParty.style.marginRight = '20px';
 
-document.body.append(displayComputerParty)
+navBar.append(displayComputerParty)
 
 displayComputerParty.addEventListener('click', jrk.displayCPUParty)
-
-
-
-
-// test
