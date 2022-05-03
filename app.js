@@ -577,7 +577,7 @@ class trainers {
             let damage = Math.round(eighthForm * userTypeMultiplier)
         
     
-            this.bg[0].stats[0].base_stat -= damage; 
+            this.bg[1].stats[0].base_stat -= damage; 
 
             console.log(`User did ${damage} damage`)
             console.log(`${userPokemonName} HP: ${userHP} \n${computerPokemonName} HP: ${computerHP}`)   
@@ -669,7 +669,7 @@ class trainers {
 
         // use damage to take away from HP and check if pokemon fainted
 
-        this.bg[1].stats[0].base_stat -= damage; 
+        this.bg[0].stats[0].base_stat -= damage; 
 
         console.log(`CPU did ${damage} damage`)
         console.log(`${userPokemonName} HP: ${this.bg[0].stats[0].base_stat} \n${computerPokemonName} HP: ${this.bg[1].stats[0].base_stat}`) 
