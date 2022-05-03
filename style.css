@@ -1,0 +1,12 @@
+
+button {
+  width: 50px;
+  display:flex;
+  justify-content: center;
+  border: 1px solid red;
+
+}
+
+#pokemonMoveList {
+  border: 1px solid red;
+}
