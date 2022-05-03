@@ -30,7 +30,7 @@ class trainers {
                 userSelectPokemonBtn.setAttribute('class', 'userPokemonBtns')
                 userSelectPokemonBtn.style.color = 'green';
                 userSelectPokemonBtn.style.padding = '10px';
-                userSelectPokemonBtn.innerHTML = `${pokeName.name}`;
+                userSelectPokemonBtn.innerHTML = `${pokeName.name.toUpperCase()}`;
 
                 let pokemonSprite = document.createElement('img')
                 let findPicture = pokemon.find(x => {
@@ -126,19 +126,23 @@ class trainers {
         let userPickField = document.createElement('div')
         document.body.append(userPickField)
         let moveSubmitBtn = document.createElement('button')
-        moveSubmitBtn.innerHTML = 'SUBMIT MOVE LIST'
+        moveSubmitBtn.innerHTML = `ADD ${curPoke.name.toUpperCase()} TO YOUR PARTY`
+        moveSubmitBtn.style.padding = '10px';
+        moveSubmitBtn.style.margin = '10px';
         userPickField.append(moveSubmitBtn)
 
 
         let selectList1 = document.createElement("select");
         selectList1.id = "move1";
+        selectList1.style.padding = '10px';
+        selectList1.style.margin = '10px';
         userPickField.append(selectList1)
 
 
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option1 = document.createElement("option");
             option1.value = displayAvailableMoves[i].name;
-            option1.text = displayAvailableMoves[i].name;
+            option1.text = displayAvailableMoves[i].name.toUpperCase();
             option1.setAttribute('class','movePick')
             selectList1.appendChild(option1);
         }
@@ -146,13 +150,15 @@ class trainers {
 
         let selectList2 = document.createElement("select");
         selectList2.id = "move2";
+        selectList2.style.padding = '10px';
+        selectList2.style.margin = '10px';
         userPickField.append(selectList2)
 
 
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option2 = document.createElement("option");
             option2.value = displayAvailableMoves[i].name;
-            option2.text = displayAvailableMoves[i].name;
+            option2.text = displayAvailableMoves[i].name.toUpperCase();
             option2.setAttribute('class','movePick')
             selectList2.appendChild(option2);
         }
@@ -160,13 +166,15 @@ class trainers {
 
         let selectList3 = document.createElement("select");
         selectList3.id = "move3";
+        selectList3.style.padding = '10px';
+        selectList3.style.margin = '10px';
         userPickField.append(selectList3)
 
         
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option3 = document.createElement("option");
             option3.value = displayAvailableMoves[i].name;
-            option3.text = displayAvailableMoves[i].name;
+            option3.text = displayAvailableMoves[i].name.toUpperCase();
             option3.setAttribute('class','movePick')
             selectList3.appendChild(option3);
         }
@@ -174,12 +182,14 @@ class trainers {
 
         let selectList4 = document.createElement("select");
         selectList4.id = "move4";
+        selectList4.style.padding = '10px';
+        selectList4.style.margin = '10px';
         userPickField.append(selectList4)
 
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option4 = document.createElement("option");
             option4.value = displayAvailableMoves[i].name;
-            option4.text = displayAvailableMoves[i].name;
+            option4.text = displayAvailableMoves[i].name.toUpperCase();
             option4.setAttribute('class','movePick')
             selectList4.appendChild(option4);
         }
@@ -272,7 +282,8 @@ class trainers {
     
                     let cpuSelectPokemonBtn = document.createElement('BUTTON')
                     cpuSelectPokemonBtn.style.color = 'red';
-                    cpuSelectPokemonBtn.innerHTML = `${pokeName.name}`;
+                    cpuSelectPokemonBtn.style.padding = '10px';
+                    cpuSelectPokemonBtn.innerHTML = `${pokeName.name.toUpperCase()}`;
 
                     let pokemonSprite = document.createElement('img')
                     let findPicture = pokemon.find(x => {
@@ -366,19 +377,23 @@ class trainers {
         let userPickField = document.createElement('div')
         document.body.append(userPickField)
         let moveSubmitBtn = document.createElement('button')
-        moveSubmitBtn.innerHTML = 'SUBMIT MOVE LIST'
+        moveSubmitBtn.innerHTML = `ADD ${curPoke.name.toUpperCase()} TO CPU PARTY`
+        moveSubmitBtn.style.padding = '10px';
+        moveSubmitBtn.style.margin = '10px';
         userPickField.append(moveSubmitBtn)
 
 
         let selectList1 = document.createElement("select");
         selectList1.id = "move1";
+        selectList1.style.padding = '10px';
+        selectList1.style.margin = '10px';
         userPickField.append(selectList1)
 
 
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option1 = document.createElement("option");
             option1.value = displayAvailableMoves[i].name;
-            option1.text = displayAvailableMoves[i].name;
+            option1.text = displayAvailableMoves[i].name.toUpperCase();
             option1.setAttribute('class','movePick')
             selectList1.appendChild(option1);
         }
@@ -386,13 +401,15 @@ class trainers {
 
         let selectList2 = document.createElement("select");
         selectList2.id = "move2";
+        selectList2.style.padding = '10px';
+        selectList2.style.margin = '10px';
         userPickField.append(selectList2)
 
 
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option2 = document.createElement("option");
             option2.value = displayAvailableMoves[i].name;
-            option2.text = displayAvailableMoves[i].name;
+            option2.text = displayAvailableMoves[i].name.toUpperCase();
             option2.setAttribute('class','movePick')
             selectList2.appendChild(option2);
         }
@@ -400,13 +417,15 @@ class trainers {
 
         let selectList3 = document.createElement("select");
         selectList3.id = "move3";
+        selectList3.style.padding = '10px';
+        selectList3.style.margin = '10px';
         userPickField.append(selectList3)
 
         
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option3 = document.createElement("option");
             option3.value = displayAvailableMoves[i].name;
-            option3.text = displayAvailableMoves[i].name;
+            option3.text = displayAvailableMoves[i].name.toUpperCase();
             option3.setAttribute('class','movePick')
             selectList3.appendChild(option3);
         }
@@ -414,12 +433,14 @@ class trainers {
 
         let selectList4 = document.createElement("select");
         selectList4.id = "move4";
+        selectList4.style.padding = '10px';
+        selectList4.style.margin = '10px';
         userPickField.append(selectList4)
 
         for (let i = 0; i < displayAvailableMoves.length; i++) {
             let option4 = document.createElement("option");
             option4.value = displayAvailableMoves[i].name;
-            option4.text = displayAvailableMoves[i].name;
+            option4.text = displayAvailableMoves[i].name.toUpperCase();
             option4.setAttribute('class','movePick')
             selectList4.appendChild(option4);
         }
@@ -443,7 +464,7 @@ class trainers {
                         if (x.name === name) {
                             displayMoveSubmits.push(x)
                         }
-                    })
+                })
             })
 
 
