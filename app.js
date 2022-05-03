@@ -15,6 +15,14 @@ class trainers {
  
         const M = 151;
         // let pokemonList = Array.from({length: M}, (_, index) => index + 1);
+        
+        let userField = document.querySelector('#userBar')
+
+
+        let chooseYourPokemonText = document.createElement('h1')
+        chooseYourPokemonText.innerHTML = 'Choose CPU Pokemon:'
+        userField.prepend(chooseYourPokemonText)
+
 
 
         await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${M}&offset=0`)
@@ -30,7 +38,11 @@ class trainers {
                 userSelectPokemonBtn.setAttribute('class', 'userPokemonBtns')
                 userSelectPokemonBtn.style.color = 'green';
                 userSelectPokemonBtn.style.padding = '10px';
+                userSelectPokemonBtn.style.maxWidth = '110px';
                 userSelectPokemonBtn.innerHTML = `${pokeName.name.toUpperCase()}`;
+
+                // let userField = document.querySelector('#userBar')
+                userField.append(userSelectPokemonBtn)
 
                 let pokemonSprite = document.createElement('img')
                 let findPicture = pokemon.find(x => {
@@ -40,13 +52,14 @@ class trainers {
                 })
 
                 pokemonSprite.src = `${findPicture.frontImage}`;
-                pokemonSprite.style.height = '50px'
-                pokemonSprite.style.width = '50px'
-                userSelectPokemonBtn.appendChild(pokemonSprite)
+                pokemonSprite.style.height = '60px'
+                pokemonSprite.style.width = '60px'
+                userSelectPokemonBtn.append(pokemonSprite)
 
 
-                let listOfPokemonBtn = document.querySelector('.pokemonButtons')
+                let listOfPokemonBtn = document.querySelector('.userPokemonButtons')
                 listOfPokemonBtn.appendChild(userSelectPokemonBtn)
+                // userField.append(listOfPokemonBtn)
 
                 
                 userSelectPokemonBtn.addEventListener('click', function(e) {
@@ -269,6 +282,12 @@ class trainers {
      
         const M = 151;
         // let pokemonList = Array.from({length: M}, (_, index) => index + 1);
+
+        let cpuField = document.querySelector('#cpuBar')
+
+        let chooseCPUPokemonText = document.createElement('h1')
+        chooseCPUPokemonText.innerHTML = 'Choose YOUR Pokemon:'
+        cpuField.prepend(chooseCPUPokemonText)
     
     
             fetch(`https://pokeapi.co/api/v2/pokemon?limit=${M}&offset=0`)
@@ -283,7 +302,11 @@ class trainers {
                     let cpuSelectPokemonBtn = document.createElement('BUTTON')
                     cpuSelectPokemonBtn.style.color = 'red';
                     cpuSelectPokemonBtn.style.padding = '10px';
+                    cpuSelectPokemonBtn.style.maxWidth = '110px';
                     cpuSelectPokemonBtn.innerHTML = `${pokeName.name.toUpperCase()}`;
+
+                    // let cpuField = document.querySelector('#cpuBar')
+                    cpuField.append(cpuSelectPokemonBtn)
 
                     let pokemonSprite = document.createElement('img')
                     let findPicture = pokemon.find(x => {
@@ -293,28 +316,23 @@ class trainers {
                     })
 
                     pokemonSprite.src = `${findPicture.frontImage}`;
-                    pokemonSprite.style.height = '50px'
-                    pokemonSprite.style.width = '50px'
+                    pokemonSprite.style.height = '60px'
+                    pokemonSprite.style.width = '60px'
                     cpuSelectPokemonBtn.appendChild(pokemonSprite)
 
                     
-                    let listOfPokemonBtn = document.querySelector('.pokemonButtons')
+                    let listOfPokemonBtn = document.querySelector('.cpuPokemonButtons')
                     listOfPokemonBtn.append(cpuSelectPokemonBtn)
+                    // cpuField.append(listOfPokemonBtn)
     
     
         
                     cpuSelectPokemonBtn.addEventListener('click', function(e) {
-    
-                    // if (listOfPokemonBtn.style.display === "none") {
-                    //         listOfPokemonBtn.style.display = "block";
-                    // } else {
-                    //         listOfPokemonBtn.style.display = "none";
-                    // }
 
-                    if (jrk.pokemonParty.length < 3) {
+                    if (jrk.computerParty.length < 3) {
                     const pushPokemon = pokemon.find(j => j.frontImage === e.target.src)
                 
-                    let completePokemon = jrk.selectCPUMoves(pushPokemon)
+                    jrk.selectCPUMoves(pushPokemon)
     
     
                     } else {
@@ -821,8 +839,18 @@ class trainers {
 
     battle = () => {
 
-        alert('the pokemon match has begun.')
-        console.log('sending out the first pokemon');
+        let pokemonSelectScreen = document.querySelector('#pokemonSelectScreen')
+        pokemonSelectScreen.style.display = 'none';
+
+        let textBox = document.createElement('div')
+        document.body.append(textBox)
+        let welcomeText = document.createElement('h1')
+        welcomeText.innerHTML = 'Welcome to Pokemon Arena!';
+        textBox.append(welcomeText)
+        
+
+        // alert('the pokemon match has begun.')
+        // console.log('sending out the first pokemon');
 
         this.bg.push(this.pokemonParty[0])
 
@@ -1221,26 +1249,37 @@ let TYPE_CHART = {
 // Select User Pokemon
 
 let selectYourPokemonBtn = document.createElement('BUTTON')
-selectYourPokemonBtn.innerHTML = 'SELECT YOUR POKEMON';
+selectYourPokemonBtn.innerHTML = 'SELECT POKEMON';
 selectYourPokemonBtn.style.padding = '10px';
 selectYourPokemonBtn.style.marginRight = '20px';
 
 document.body.append(selectYourPokemonBtn)
 
-selectYourPokemonBtn.addEventListener('click', jrk.selectUserPokemon)
+selectYourPokemonBtn.addEventListener('click', function(e) {
+    jrk.selectUserPokemon()
+    jrk.selectCPUPokemon()
+})
 
 // Select CPU Pokemon
-let selectComputerPokemonBtn = document.createElement('BUTTON')
-selectComputerPokemonBtn.innerHTML = 'SELECT CPU POKEMON';
-selectComputerPokemonBtn.style.padding = '10px';
-selectComputerPokemonBtn.style.marginRight = '20px';
+// let selectComputerPokemonBtn = document.createElement('BUTTON')
+// selectComputerPokemonBtn.innerHTML = 'SELECT CPU POKEMON';
+// selectComputerPokemonBtn.style.padding = '10px';
+// selectComputerPokemonBtn.style.marginRight = '20px';
 
-document.body.append(selectComputerPokemonBtn)
+// document.body.append(selectComputerPokemonBtn)
 
-selectComputerPokemonBtn.addEventListener('click', jrk.selectCPUPokemon)
+// selectComputerPokemonBtn.addEventListener('click', jrk.selectCPUPokemon)
 
 // Battle
 
+let battleButton = document.createElement('BUTTON')
+battleButton.innerHTML = 'BATTLE';
+battleButton.style.padding = '10px';
+battleButton.style.marginRight = '20px';
+
+document.body.append(battleButton)
+
+battleButton.addEventListener('click', jrk.battle)
 
 // Show User Pokemon
 

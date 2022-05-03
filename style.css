@@ -1,8 +1,8 @@
 
 button {
   width: 50px;
-  display:flex;
-  justify-content: center;
+  display:grid;
+  grid-column: 1fr 1fr 1fr;
   border: 1px solid red;
 
 }
@@ -10,3 +10,30 @@ button {
 #pokemonMoveList {
   border: 1px solid red;
 }
+
+#userBar button {
+  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
+
+#cpuBar button {
+  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
+
+.userPokemonBtns {
+  display: grid;
+  grid-column: 1fr 1fr 1fr;
+  margin: 100px;
+}
+

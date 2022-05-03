@@ -1,3 +1,6 @@
+<b>POKEMON BATTLE ARENA</b>
+
+
 Project Description:
 My app is a Pokemon arena where a user can select 3 pokemon with a preset move list. The user can battle the pokemon they choose against a computer who randomly creates their team of pokemon. When a pokemon reaches 0 HP, the pokemon faints and the user has to choose the next pokemon to fight in the arena.
 
