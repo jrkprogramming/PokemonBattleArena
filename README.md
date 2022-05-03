@@ -1,40 +1,14 @@
-Goals:
-
-- user should be able to pick which pokemon they want in their party.
-- user should then be able to choose which moves (total of 4) they want.
-
-- Create a drop down menu for pokemon and moves
+Project Description:
+My app is a Pokemon arena where a user can select 3 pokemon with a preset move list. The user can battle the pokemon they choose against a computer who randomly creates their team of pokemon. When a pokemon reaches 0 HP, the pokemon faints and the user has to choose the next pokemon to fight in the arena.
 
 
+MVP Goals:
 
-pretty much an intrikit rock paper scissors game
-
-Stretch Goals:
-- add dual types on pokemon
-- incorporate berries
-- incorporate special moves
-- user can change our pokemon
-- Pokedex feature that has all the data on every pokemon
-
-
-
-
-http://www.pokemaniablog.com/2017/11/11/CalculatingHP.html
-
-https://bulbapedia.bulbagarden.net/wiki/Damage
-
-
-https://gist.github.com/agarie/2620966
-
-https://codepen.io/jaflo/pen/AzgmQb
-
-bugs:
-- inputting multiple of the same pokemon/pokemon moves breaks the pokemon selection
-- 4/30 issue now is the health is not saving after iterations of moves.
-- need to uppercase all the names and moves
-- pokemon should not be able to learn the same move more than once.
-- calculate health
-
-implement accuracy?
-damge doesnt save into health
-did a lot of testing the types and moves to make sure they were accurate.
+As a player, I want to select the pokemon in a draft pick style.
+As a player, I want to be able to choose which set of pokemon I want to battle with.
+As a player, I want to be able to see which pokemon is battling at the moment and which pokemon I have left to enter the battle.
+As a player, I should only be able to battle with one Pokemon at a time. 
+As a player, there should be a ‘RUN’ button that lets me quit and reset the match.
+As a player, I should know how much HP is left on my Pokemon and my opponent’s.
+As a player, I should be able to choose which of the 4 moves I want to do per round.
+As a player, I want to know what element each move is (electric, fire, water, ground)
