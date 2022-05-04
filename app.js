@@ -686,13 +686,30 @@ class trainers {
                 
                 // GAME OVER
             } else {
-                this.bg.push(this.computerParty[1])
+
+                this.bg.push(this.computerParty[0])
+
                 console.log(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
                 alert(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
+
+                let cpuHealth = document.querySelector('#cpuHealth')
+                cpuHealth.style.marginLeft = '600px'
+                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].stats[0].base_stat} HP`
+
+                let cpuSpriteField = document.querySelector('#cpuSprite')
+                let cpuSprite = document.createElement('img')
+                cpuSprite.src = `${jrk.computerParty[0].frontImage}`
+                cpuSprite.style.width = '300px'
+                cpuSprite.style.height = '300px'
+                cpuSprite.style.marginLeft = '600px'
+                cpuSpriteField.append(cpuSprite)
+
+                alert('should stop to pick choice')
+
+                return
             }
 
         }
-            
     }
 
     computerDealsDamage = (userMoveIndex) => {
@@ -748,8 +765,10 @@ class trainers {
 
         if (cpuTypeMultiplier === 2) {
             console.log("It's super effective!")
+            alert("It's super effective!")
         } else if (cpuTypeMultiplier === 0.5) {
             console.log("It's not very effective...")
+            alert("It's not very effective...")
         }
 
         
@@ -759,6 +778,8 @@ class trainers {
 
         
         // CHECKING FOR WINNER AND IF A POKEMON FAINTS  
+
+        //----------------------------------------------------------------
         if (userHP <= 0) {
 
             console.log(`${userPokemonName} fainted!`)
@@ -792,12 +813,30 @@ class trainers {
                 
                 // GAME OVER
             } else {
-                this.bg.push(this.computerParty[0])
+
+
+                this.bg.push(jrk.computerParty[0])
                 // switch to 1 if it dont work
-                console.log(`CPU sent out ${this.computerParty[0].name}`)
-                alert(`CPU sent out ${this.computerParty[0].name}`)
+
+                console.log(`CPU sent out ${jrk.computerParty[0].name.toUpperCase()}`)
+                alert(`CPU sent out ${jrk.computerParty[0].name.toUpperCase()}`)
+
+                let cpuHealth = document.querySelector('#cpuHealth')
+                cpuHealth.style.marginLeft = '600px'
+                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].stats[0].base_stat} HP`
+
+                let cpuSpriteField = document.querySelector('#cpuSprite')
+                let cpuSprite = document.createElement('img')
+                cpuSprite.src = `${jrk.computerParty[0].frontImage}`
+                cpuSprite.style.width = '300px'
+                cpuSprite.style.height = '300px'
+                cpuSprite.style.marginLeft = '600px'
+                cpuSpriteField.append(cpuSprite)
+
+                return
             }
         }
+        //----------------------------------------------------------------
     }
 
     checkSpeed = () => {
@@ -828,31 +867,39 @@ class trainers {
     //    let battleScreen = document.querySelector('#battleScreen')
     //    let gameOptions = document.querySelector('#gameOptions')
 
-        // Instead of creating buttons in here, add them to HTML and query select them
+    // Instead of creating buttons in here, add them to HTML and query select them
 
         let whoGoesFirst = this.checkSpeed()
 
         let move0Btn = document.querySelector('#move0Btn')
         move0Btn.innerHTML = `${userMoveName0.toUpperCase()}`
-        move0Btn.style.padding = '50px'
+        move0Btn.style.padding = '45px 70px'
 
         move0Btn.addEventListener('click', function(e) {
 
             if (whoGoesFirst === true) {
+
+
                 jrk.userDealsDamage(0);
+                
                 jrk.computerDealsDamage(0);
-                jrk.optionsScreen();
+
+
+                // jrk.optionsScreen();
             } else if (whoGoesFirst === false) {
+
                 jrk.computerDealsDamage(0);
+
                 jrk.userDealsDamage(0);
-                jrk.optionsScreen();
+
+                // jrk.optionsScreen();
             } 
         
         })
 
         let move1Btn = document.querySelector('#move1Btn')
         move1Btn.innerHTML = `${userMoveName1.toUpperCase()}`
-        move1Btn.style.padding = '50px'
+        move1Btn.style.padding = '45px 70px'
         console.log(move1Btn)
 
         move1Btn.addEventListener('click', function(e) {
@@ -871,7 +918,7 @@ class trainers {
 
         let move2Btn = document.querySelector('#move2Btn')
         move2Btn.innerHTML = `${userMoveName2.toUpperCase()}`
-        move2Btn.style.padding = '50px'
+        move2Btn.style.padding = '45px 70px'
 
         move2Btn.addEventListener('click', function(e) {
 
@@ -889,7 +936,7 @@ class trainers {
 
         let move3Btn = document.querySelector('#move3Btn')
         move3Btn.innerHTML = `${userMoveName3.toUpperCase()}`
-        move3Btn.style.padding = '50px'
+        move3Btn.style.padding = '45px 70px'
 
         move3Btn.addEventListener('click', function(e) {
 
@@ -934,7 +981,7 @@ class trainers {
 
         // Displays Health
         let cpuHealth = document.querySelector('#cpuHealth')
-        cpuHealth.style.marginLeft = '500px'
+        cpuHealth.style.marginLeft = '600px'
         cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat} HP`
 
         let cpuSpriteField = document.querySelector('#cpuSprite')
@@ -942,7 +989,7 @@ class trainers {
         cpuSprite.src = `${this.bg[1].frontImage}`
         cpuSprite.style.width = '300px'
         cpuSprite.style.height = '300px'
-        cpuSprite.style.marginLeft = '500px'
+        cpuSprite.style.marginLeft = '600px'
         cpuSpriteField.append(cpuSprite)
 
         let userHealth = document.querySelector('#userHealth')
@@ -1357,21 +1404,8 @@ let TYPE_CHART = {
 }
 
 
-
-
-
-
-
-
 let hideBattleScreen = document.querySelector('#battleScreen')
 hideBattleScreen.style.display = 'none';
-
-
-
-
-
-
-
 
 // Standard buttons here:
 
