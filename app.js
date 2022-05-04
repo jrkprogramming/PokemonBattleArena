@@ -111,10 +111,12 @@ class trainers {
         
 
         console.log(displayAvailableMoves)
+        
+        let selectScreen = document.querySelector('#selectScreen')
 
 
         let userPickField = document.createElement('div')
-        document.body.append(userPickField)
+        selectScreen.append(userPickField)
 
         let moveSubmitBtn = document.createElement('button')
         moveSubmitBtn.innerHTML = `ADD ${curPoke.name.toUpperCase()} TO YOUR PARTY`
@@ -191,6 +193,8 @@ class trainers {
 
         moveSubmitBtn.addEventListener("click", function (e) {
 
+
+            // POKEMON SHOULD NOT BE ABLE TO LEARN THE SAME MOVE TWICE
 
             moveSubmits.push(selectList1.value, selectList2.value, selectList3.value, selectList4.value);
 
@@ -345,10 +349,11 @@ class trainers {
         
 
         console.log(displayAvailableMoves)
+        let selectScreen = document.querySelector('#selectScreen')
 
 
         let userPickField = document.createElement('div')
-        document.body.append(userPickField)
+        selectScreen.append(userPickField)
         
         let moveSubmitBtn = document.createElement('button')
         moveSubmitBtn.innerHTML = `ADD ${curPoke.name.toUpperCase()} TO CPU PARTY`
@@ -426,7 +431,7 @@ class trainers {
 
         moveSubmitBtn.addEventListener("click", function (e) {
 
-            // let checkAllMoves = allMovesList.find(x => x.name === options.value.name)
+            // POKEMON SHOULD NOT BE ABLE TO LEARN THE SAME MOVE TWICE
 
             moveSubmits.push(selectList1.value, selectList2.value, selectList3.value, selectList4.value);
 
@@ -453,25 +458,7 @@ class trainers {
             
         })
 
-    // =================================================================
 
-
-        // for (let i=1; i<5; i++) {
-
-        // let chooseMove = prompt(`Choose Move ${i}`);
-
-        // let checkAllMoves = allMovesList.find(x => x.name === chooseMove)
-
-        // for (let j=0; j < curPoke.moves.length; j++) {
-        //     if (curPoke.moves[j].move.name === checkAllMoves.name) {
-        //         if (curPoke.moveSet.length < 4) {
-        //             curPoke.moveSet.push(checkAllMoves);
-        //             }
-        //         }
-        //     }
-
-        // }
-        // jrk.computerParty.push(curPoke)
     }
 
     displayUserParty = () => {
@@ -880,8 +867,8 @@ class trainers {
 
         // working on transitioning to the battle screen
 
-        // let hideSelectScreen = document.querySelector('#selectScreen')
-        // hideSelectScreen.style.display = 'none';
+        let hideSelectScreen = document.querySelector('#selectScreen')
+        hideSelectScreen.style.display = 'none';
 
         let textBox = document.createElement('div')
         document.body.append(textBox)
@@ -1298,11 +1285,11 @@ navBar.append(selectYourPokemonBtn)
 
 selectYourPokemonBtn.addEventListener('click', function(e) {
 
-    setTimeout(jrk.selectUserPokemon(),5000)
+    setTimeout(jrk.selectUserPokemon(), 5000)
     // jrk.selectUserPokemon()
     setTimeout(jrk.selectCPUPokemon(), 6000)
     // jrk.selectCPUPokemon()
-    
+
 })
 
 // Battle
