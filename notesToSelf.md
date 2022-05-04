@@ -13,7 +13,7 @@ Stretch Goals:
 - add dual types on pokemon
 - incorporate berries
 - incorporate special moves
-- user can change our pokemon
+- user can change out pokemon
 - Pokedex feature that has all the data on every pokemon
 
 
@@ -28,6 +28,7 @@ https://gist.github.com/agarie/2620966
 
 https://codepen.io/jaflo/pen/AzgmQb
 
+
 bugs:
 - inputting multiple of the same pokemon/pokemon moves breaks the pokemon selection
 - 4/30 issue now is the health is not saving after iterations of moves.
@@ -35,6 +36,11 @@ bugs:
 - pokemon should not be able to learn the same move more than once.
 - calculate health
 
+
 implement accuracy?
 damge doesnt save into health
 did a lot of testing the types and moves to make sure they were accurate.
+
+
+
+Things I Learned: 

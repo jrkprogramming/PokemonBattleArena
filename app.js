@@ -7,7 +7,7 @@ class trainers {
     }
 
 
-    selectUserPokemon = async () => {
+    selectUserPokemon =  () => {
 
         let pokemonList = [];
  
@@ -23,7 +23,7 @@ class trainers {
 
 
 
-        await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${M}&offset=0`)
+         fetch(`https://pokeapi.co/api/v2/pokemon?limit=${M}&offset=0`)
             .then(res => res.json())
             .then((res) => {
             // console.log(res.results)
@@ -66,7 +66,15 @@ class trainers {
 
                 const pushPokemon = pokemon.find(j => j.frontImage === e.target.src)
 
-                jrk.selectUserMoves(pushPokemon)
+                if (pushPokemon == undefined) {
+
+                    alert('The Pokemon you have selected is still loading. Please try again!')
+
+                } else {
+    
+                    jrk.selectUserMoves(pushPokemon)
+
+                }
 
                 } else {
 
@@ -78,36 +86,7 @@ class trainers {
             })
         })
     })
-}
-    
-// =================================================================
-
-    // TO DELETE     
-
-
-        // if(this.pokemonParty.length < 3) {
-        //     let choosePokemon = prompt("Which Pokemon Will You Choose to Battle?");
-        //     let searchPokemon = pokemon.find(x => x.name === choosePokemon)
-
-        //         if (searchPokemon.name === choosePokemon) {
-
-        //             this.pokemonParty.push(searchPokemon)
-        //             // console.log(this.pokemonParty)
-        //             // console.log(searchPokemon)
-
-        //             this.selectUserMoves(searchPokemon);
-
-
-
-        //     }
-
-        // } else {
-
-        //     alert('You have the max amount of Pokemon! Hit the battle button when you are ready to begin!')
-
-        // }
-
-    // }
+    }
   
     selectUserMoves = (curPoke) => {
 
@@ -324,7 +303,15 @@ class trainers {
                     if (jrk.computerParty.length < 3) {
                     const pushPokemon = pokemon.find(j => j.frontImage === e.target.src)
                 
-                    jrk.selectCPUMoves(pushPokemon)
+                    if (pushPokemon == undefined) {
+
+                        alert('The Pokemon you have selected is still loading. Please try again!')
+
+                    } else {
+        
+                        jrk.selectCPUMoves(pushPokemon)
+                        
+                    }
     
     
                     } else {
@@ -337,30 +324,6 @@ class trainers {
             })
         })
     }
-
-// =================================================================
-
-        // TO DELETE
-
-            // check the user input and compare them to allMovesList and take the object from allMovesList that matches the name of the move    
-
-        // if(this.computerParty.length < 3) {
-        //     let choosePokemon = prompt("Choose Your Opponent's Pokemon!");
-        //     let searchPokemon = pokemon.find(x => x.name === choosePokemon)
-
-        //         if (searchPokemon.name === choosePokemon) {
-
-        //             this.computerParty.push(searchPokemon)
-        //             // console.log(this.computerParty)
-        //             // console.log(searchPokemon)
-
-        //             this.selectCPUMoves(searchPokemon);
-
-
-        //     } else {
-        //         alert('You have the max amount of Pokemon! Hit the battle button to begin!')
-        //     }
-        // }
 
     selectCPUMoves = (curPoke) => {
 
@@ -616,7 +579,7 @@ class trainers {
     
     }
 
-    calculateComputerTypeMultiplier = (x) => {
+    calculateComputerTypeMultiplier = (x) => {  
 
         // let computerChoosesRandomMove = Math.floor(Math.random() * 3)
 
@@ -915,10 +878,15 @@ class trainers {
 
     battle = () => {
 
+        // working on transitioning to the battle screen
+
+        // let hideSelectScreen = document.querySelector('#selectScreen')
+        // hideSelectScreen.style.display = 'none';
+
         let textBox = document.createElement('div')
         document.body.append(textBox)
         let welcomeText = document.createElement('h1')
-        welcomeText.innerHTML = 'Welcome to Pokemon Arena!';
+        welcomeText.innerHTML = "Welcome to Pokemon Arena! Let's Battle!";
         textBox.append(welcomeText)
         
 
@@ -1329,8 +1297,12 @@ selectYourPokemonBtn.style.marginRight = '20px';
 navBar.append(selectYourPokemonBtn)
 
 selectYourPokemonBtn.addEventListener('click', function(e) {
-    jrk.selectUserPokemon()
-    jrk.selectCPUPokemon()
+
+    setTimeout(jrk.selectUserPokemon(),5000)
+    // jrk.selectUserPokemon()
+    setTimeout(jrk.selectCPUPokemon(), 6000)
+    // jrk.selectCPUPokemon()
+    
 })
 
 // Battle
