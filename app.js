@@ -792,82 +792,155 @@ class trainers {
             let userMoveName2 = this.bg[0].moveSet[2].name;
             let userMoveName3 = this.bg[0].moveSet[3].name;
 
-       // There should be buttons for ATTACK and RUN
+    //    let battleScreen = document.querySelector('#battleScreen')
+    //    let gameOptions = document.querySelector('#gameOptions')
 
-
-       let battleScreen = document.querySelector('#battleScreen')
-
-
-        // Add Pokemon heatlh and sprite here via DOM
-
-
-        let attackInput = prompt('What would you like to do?', 'fight or run'); 
+        // Instead of creating buttons in here, add them to HTML and query select them
 
         let whoGoesFirst = this.checkSpeed()
+
+        let move0Btn = document.querySelector('#move0Btn')
+        move0Btn.innerHTML = `${userMoveName0.toUpperCase()}`
+
+        move0Btn.addEventListener('click', function(e) {
+
+            if (whoGoesFirst === true) {
+                jrk.userDealsDamage(0);
+                jrk.computerDealsDamage(0)
+                jrk.optionsScreen()
+            } else if (whoGoesFirst === false) {
+                jrk.computerDealsDamage(0)
+                jrk.userDealsDamage(0);
+                jrk.optionsScreen()
+            } 
         
-        if(attackInput === 'fight') {
+            return 
+        })
 
-        let pickAttack = prompt(`What will ${this.bg[0].name} do?\n0: ${userMoveName0}\n1: ${userMoveName1}\n2: ${userMoveName2}\n3: ${userMoveName3}\n`)
+        let move1Btn = document.querySelector('#move1Btn')
+        move1Btn.innerHTML = `${userMoveName1.toUpperCase()}`
+        console.log(move1Btn)
+
+        move1Btn.addEventListener('click', function(e) {
+
+            if (whoGoesFirst === true) {
+                jrk.userDealsDamage(1);
+                jrk.computerDealsDamage(1)
+                jrk.optionsScreen()
+            } else if (whoGoesFirst === false) {
+                jrk.computerDealsDamage(1)
+                jrk.userDealsDamage(1);
+                jrk.optionsScreen()
+            } 
+        
+            return 
+        })
+
+        let move2Btn = document.querySelector('#move2Btn')
+        move2Btn.innerHTML = `${userMoveName2.toUpperCase()}`
+
+        move2Btn.addEventListener('click', function(e) {
+
+            if (whoGoesFirst === true) {
+                jrk.userDealsDamage(2);
+                jrk.computerDealsDamage(2)
+                jrk.optionsScreen()
+            } else if (whoGoesFirst === false) {
+                jrk.computerDealsDamage(2)
+                jrk.userDealsDamage(2);
+                jrk.optionsScreen()
+            } 
+        
+            return 
+        })
+
+        let move3Btn = document.querySelector('#move3Btn')
+        move3Btn.innerHTML = `${userMoveName3.toUpperCase()}`
+
+        move3Btn.addEventListener('click', function(e) {
+
+            if (whoGoesFirst === true) {
+                jrk.userDealsDamage(3);
+                jrk.computerDealsDamage(3)
+                jrk.optionsScreen()
+            } else if (whoGoesFirst === false) {
+                jrk.computerDealsDamage(3)
+                jrk.userDealsDamage(3);
+                jrk.optionsScreen()
+            } 
+        
+            return 
+        })
 
 
-            if (pickAttack === '0') {
+        // let attackInput = prompt('What would you like to do?', 'fight or run'); 
 
-            // while((this.bg[0].stats[0].base_stat > 0) || ){
+        // let whoGoesFirst = this.checkSpeed()
+        
+        // if(attackInput === 'fight') {
 
-                if (whoGoesFirst === true) {
-                    this.userDealsDamage(0);
-                    this.computerDealsDamage(0)
-                    this.optionsScreen()
-                } else if (whoGoesFirst === false) {
-                    this.computerDealsDamage(0)
-                    this.userDealsDamage(0);
-                    this.optionsScreen()
-                } 
-            }
+        // let pickAttack = prompt(`What will ${this.bg[0].name} do?\n0: ${userMoveName0}\n1: ${userMoveName1}\n2: ${userMoveName2}\n3: ${userMoveName3}\n`)
 
-            if (pickAttack === '1') {
 
-                if (whoGoesFirst === true) {
-                    this.userDealsDamage(1);
-                    this.computerDealsDamage(1)
-                    this.optionsScreen()
-                } else if (whoGoesFirst === false) {
-                    this.computerDealsDamage(1)
-                    this.userDealsDamage(1);
-                    this.optionsScreen()
-                } 
-            }
+        //     if (pickAttack === '0') {
 
-            if (pickAttack === '2') {
+        //     // while((this.bg[0].stats[0].base_stat > 0) || ){
 
-                if (whoGoesFirst === true) {
-                    this.userDealsDamage(2);
-                    this.computerDealsDamage(2)
-                    this.optionsScreen()
-                } else if (whoGoesFirst === false) {
-                    this.computerDealsDamage(2)
-                    this.userDealsDamage(2);
-                    this.optionsScreen()
-                }
-            }
+        //         if (whoGoesFirst === true) {
+        //             this.userDealsDamage(0);
+        //             this.computerDealsDamage(0)
+        //             this.optionsScreen()
+        //         } else if (whoGoesFirst === false) {
+        //             this.computerDealsDamage(0)
+        //             this.userDealsDamage(0);
+        //             this.optionsScreen()
+        //         } 
+        //     }
 
-            if (pickAttack === '3') {
+        //     if (pickAttack === '1') {
 
-                if (whoGoesFirst === true) {
-                    this.userDealsDamage(3);
-                    this.computerDealsDamage(3);
-                    this.optionsScreen();
-                } else if (whoGoesFirst === false) {
-                    this.computerDealsDamage(3);
-                    this.userDealsDamage(3);
-                    this.optionsScreen();
-                } 
-            }
+        //         if (whoGoesFirst === true) {
+        //             this.userDealsDamage(1);
+        //             this.computerDealsDamage(1)
+        //             this.optionsScreen()
+        //         } else if (whoGoesFirst === false) {
+        //             this.computerDealsDamage(1)
+        //             this.userDealsDamage(1);
+        //             this.optionsScreen()
+        //         } 
+        //     }
 
-        } else if (attackInput === 'run') {
-            alert('REFRESH THE PAGE TO START A NEW GAME.')
+        //     if (pickAttack === '2') {
 
-        }
+        //         if (whoGoesFirst === true) {
+        //             this.userDealsDamage(2);
+        //             this.computerDealsDamage(2)
+        //             this.optionsScreen()
+        //         } else if (whoGoesFirst === false) {
+        //             this.computerDealsDamage(2)
+        //             this.userDealsDamage(2);
+        //             this.optionsScreen()
+        //         }
+        //     }
+
+        //     if (pickAttack === '3') {
+
+        //         if (whoGoesFirst === true) {
+        //             this.userDealsDamage(3);
+        //             this.computerDealsDamage(3);
+        //             this.optionsScreen();
+        //         } else if (whoGoesFirst === false) {
+        //             this.computerDealsDamage(3);
+        //             this.userDealsDamage(3);
+        //             this.optionsScreen();
+        //         } 
+        //     }
+
+        // } else if (attackInput === 'run') {
+        //     alert('REFRESH THE PAGE TO START A NEW GAME.')
+
+        // }
+
     }
 
     battle = () => {

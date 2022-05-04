@@ -21,10 +21,12 @@ Stretch Goals:
 
 http://www.pokemaniablog.com/2017/11/11/CalculatingHP.html
 
+
 https://bulbapedia.bulbagarden.net/wiki/Damage
 
 
 https://gist.github.com/agarie/2620966
+
 
 https://codepen.io/jaflo/pen/AzgmQb
 
