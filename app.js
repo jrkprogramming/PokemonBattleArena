@@ -794,6 +794,13 @@ class trainers {
 
        // There should be buttons for ATTACK and RUN
 
+
+       let battleScreen = document.querySelector('#battleScreen')
+
+
+        // Add Pokemon heatlh and sprite here via DOM
+
+
         let attackInput = prompt('What would you like to do?', 'fight or run'); 
 
         let whoGoesFirst = this.checkSpeed()
@@ -870,20 +877,49 @@ class trainers {
         let hideSelectScreen = document.querySelector('#selectScreen')
         hideSelectScreen.style.display = 'none';
 
-        let textBox = document.createElement('div')
-        document.body.append(textBox)
-        let welcomeText = document.createElement('h1')
-        welcomeText.innerHTML = "Welcome to Pokemon Arena! Let's Battle!";
-        textBox.append(welcomeText)
+        let battleScreen = document.querySelector('#battleScreen')
+        battleScreen.style.display = '';
+
+        // let textBox = document.createElement('div')
+        // battleScreen.append(textBox)
+        // let welcomeText = document.createElement('h1')
+        // welcomeText.innerHTML = "Welcome to Pokemon Arena! Let's Battle!";
+        // battleScreen.append(welcomeText)
+
+        let gameTextBox = document.querySelector('#gameText')
         
 
-        // alert('the pokemon match has begun.')
-        // console.log('sending out the first pokemon');
-
         this.bg.push(this.pokemonParty[0])
-
         this.bg.push(this.computerParty[0])
-        this.computerParty.pop()
+        // this.computerParty.pop()
+
+
+        // Displays Health
+        let cpuHealth = document.querySelector('#cpuHealth')
+        cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat}`
+
+        let cpuSpriteField = document.querySelector('#cpuSprite')
+        let cpuSprite = document.createElement('img')
+        cpuSprite.src = `${this.bg[1].frontImage}`
+        cpuSpriteField.append(cpuSprite)
+
+        let userHealth = document.querySelector('#userHealth')
+        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat}`
+
+        let userSpriteField = document.querySelector('#userSprite')
+        let userSprite = document.createElement('img')
+        userSprite.src = `${this.bg[0].backImage}`
+        userSpriteField.append(userSprite)
+
+
+        let introCPUText = document.createElement('p')
+        introCPUText.innerHTML = `CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`
+        gameTextBox.append(introCPUText)
+
+        let introUserText = document.createElement('p')
+        introUserText.innerHTML = `Go! ${this.pokemonParty[0].name.toUpperCase()}!`
+        gameTextBox.append(introUserText)
+
 
         console.log(this.bg)
 
@@ -1266,7 +1302,8 @@ let TYPE_CHART = {
 }
 
 
-
+let hideBattleScreen = document.querySelector('#battleScreen')
+hideBattleScreen.style.display = 'none';
 
 
 // Standard buttons here:
