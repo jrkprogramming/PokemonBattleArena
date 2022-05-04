@@ -582,7 +582,10 @@ class trainers {
     userDealsDamage = (moveIndex) => {
 
         let userTypeMultiplier = this.calculateUserTypeMultiplier(moveIndex);
+        let userMoveName = this.bg[0].moveSet[moveIndex].name;
 
+        // POKEMON used MOVE!
+        alert(`${this.bg[0].name.toUpperCase()} used ${userMoveName.toUpperCase()}`)
 
             let userPokemonName = this.bg[0].name;
             let userLevel = this.bg[0].level;
@@ -623,52 +626,69 @@ class trainers {
     
             this.bg[1].stats[0].base_stat -= damage; 
 
+            //updates cpu health after taking damage
+            let cpuHealth = document.querySelector('#cpuHealth')
+            cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat} HP`
+
             console.log(`User did ${damage} damage`)
+            // alert(`User did ${damage} damage`)
+
             console.log(`${userPokemonName} HP: ${userHP} \n${computerPokemonName} HP: ${computerHP}`)   
             console.log(`${this.bg[0].name} used ${this.bg[0].moveSet[0].name}!`)
 
             if (userTypeMultiplier === 2) {
                 console.log("It's super effective!")
+                alert("It's super effective!")
             } else if (userTypeMultiplier === 0.5) {
                 console.log('It was not very effective...')
+                alert('It was not very effective...')
             }
             
 
-            console.log(`User did ${damage} damage`)
-            console.log(`${userPokemonName} HP: ${userHP} \n${computerPokemonName} HP: ${computerHP}`)           
+            // console.log(`User did ${damage} damage`)
+            // alert(`User did ${damage} damage`)
+            // console.log(`${userPokemonName} HP: ${userHP} \n${computerPokemonName} HP: ${computerHP}`)           
 
 
 
         // CHECKING FOR WINNER AND IF A POKEMON FAINTS  
         if (this.bg[0].stats[0].base_stat <= 0) {
 
-            console.log(`${userPokemonName} fainted!`)
+            console.log(`${userPokemonName.toUpperCase()} fainted!`)
             this.bg.shift()
             this.pokemonParty.shift()
 
              if (this.pokemonParty.length === 0) {
                 console.log("Oh no! I'm out of Pokemon! *Blacks out*")
-                return
+                alert("Oh no! I'm out of Pokemon! *Blacks out*")
+                document.body.style.display = 'none';
+                
                 // GAME OVER
             } else {
                 this.bg.splice(0,0,this.pokemonParty[0])
-                console.log(`${this.name} sent out ${this.pokemonParty[0].name}`)
+                console.log(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
+                alert(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
             }
 
         } else if (this.bg[1].stats[0].base_stat <= 0) {
 
-            console.log(`${computerPokemonName} fainted!`)
+            console.log(`${computerPokemonName.toUpperCase()} fainted!`)
+            alert(`${computerPokemonName.toUpperCase()} fainted!`)
             this.bg.pop()
             this.computerParty.shift()
             
             if (this.computerParty.length === 0) {
+                document.body.style.display = 'none';
                 console.log(`${this.name} defeated CPU!`)
+                alert(`${this.name} defeated CPU!`)
                 console.log('YOU WIN')
-                return
+                alert('YOU WIN')
+                
                 // GAME OVER
             } else {
                 this.bg.push(this.computerParty[1])
-                console.log(`CPU sent out ${this.computerParty[0].name}`)
+                console.log(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
+                alert(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
             }
 
         }
@@ -715,9 +735,16 @@ class trainers {
 
         this.bg[0].stats[0].base_stat -= damage; 
 
+        // updates user health on screen after taking damage
+        let userHealth = document.querySelector('#userHealth')
+        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
+
         console.log(`CPU did ${damage} damage`)
         console.log(`${userPokemonName} HP: ${this.bg[0].stats[0].base_stat} \n${computerPokemonName} HP: ${this.bg[1].stats[0].base_stat}`) 
+
+
         console.log(`${this.bg[1].name} used ${this.bg[1].moveSet[computerChoosesRandomMove].name}!`)
+        alert(`${this.bg[1].name.toUpperCase()} used ${this.bg[1].moveSet[computerChoosesRandomMove].name.toUpperCase()}!`)
 
         if (cpuTypeMultiplier === 2) {
             console.log("It's super effective!")
@@ -740,11 +767,13 @@ class trainers {
 
              if (this.pokemonParty.length === 0) {
                 console.log("Oh no! I'm out of Pokemon! *Blacks out*")
-                return
+                alert("Oh no! I'm out of Pokemon! *Blacks out*")
+                
                 // GAME OVER
             } else {
                 this.bg.splice(0,0,this.pokemonParty[0])
                 console.log(`${this.name} sent out ${this.pokemonParty[0].name}`)
+                alert(`${this.name} sent out ${this.pokemonParty[0].name}`)
             }
 
 
@@ -756,13 +785,17 @@ class trainers {
             this.computerParty.shift()
             
             if (this.computerParty.length === 0) {
+                document.body.style.display = 'none';
+
                 console.log(`${this.name} defeated CPU!`)
-                return
+                alert(`${this.name} defeated CPU!`)
+                
                 // GAME OVER
             } else {
                 this.bg.push(this.computerParty[0])
                 // switch to 1 if it dont work
                 console.log(`CPU sent out ${this.computerParty[0].name}`)
+                alert(`CPU sent out ${this.computerParty[0].name}`)
             }
         }
     }
@@ -801,24 +834,25 @@ class trainers {
 
         let move0Btn = document.querySelector('#move0Btn')
         move0Btn.innerHTML = `${userMoveName0.toUpperCase()}`
+        move0Btn.style.padding = '50px'
 
         move0Btn.addEventListener('click', function(e) {
 
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(0);
-                jrk.computerDealsDamage(0)
-                jrk.optionsScreen()
+                jrk.computerDealsDamage(0);
+                jrk.optionsScreen();
             } else if (whoGoesFirst === false) {
-                jrk.computerDealsDamage(0)
+                jrk.computerDealsDamage(0);
                 jrk.userDealsDamage(0);
-                jrk.optionsScreen()
+                jrk.optionsScreen();
             } 
         
-            return 
         })
 
         let move1Btn = document.querySelector('#move1Btn')
         move1Btn.innerHTML = `${userMoveName1.toUpperCase()}`
+        move1Btn.style.padding = '50px'
         console.log(move1Btn)
 
         move1Btn.addEventListener('click', function(e) {
@@ -832,12 +866,12 @@ class trainers {
                 jrk.userDealsDamage(1);
                 jrk.optionsScreen()
             } 
-        
-            return 
+         
         })
 
         let move2Btn = document.querySelector('#move2Btn')
         move2Btn.innerHTML = `${userMoveName2.toUpperCase()}`
+        move2Btn.style.padding = '50px'
 
         move2Btn.addEventListener('click', function(e) {
 
@@ -851,11 +885,11 @@ class trainers {
                 jrk.optionsScreen()
             } 
         
-            return 
         })
 
         let move3Btn = document.querySelector('#move3Btn')
         move3Btn.innerHTML = `${userMoveName3.toUpperCase()}`
+        move3Btn.style.padding = '50px'
 
         move3Btn.addEventListener('click', function(e) {
 
@@ -868,78 +902,9 @@ class trainers {
                 jrk.userDealsDamage(3);
                 jrk.optionsScreen()
             } 
-        
-            return 
         })
 
 
-        // let attackInput = prompt('What would you like to do?', 'fight or run'); 
-
-        // let whoGoesFirst = this.checkSpeed()
-        
-        // if(attackInput === 'fight') {
-
-        // let pickAttack = prompt(`What will ${this.bg[0].name} do?\n0: ${userMoveName0}\n1: ${userMoveName1}\n2: ${userMoveName2}\n3: ${userMoveName3}\n`)
-
-
-        //     if (pickAttack === '0') {
-
-        //     // while((this.bg[0].stats[0].base_stat > 0) || ){
-
-        //         if (whoGoesFirst === true) {
-        //             this.userDealsDamage(0);
-        //             this.computerDealsDamage(0)
-        //             this.optionsScreen()
-        //         } else if (whoGoesFirst === false) {
-        //             this.computerDealsDamage(0)
-        //             this.userDealsDamage(0);
-        //             this.optionsScreen()
-        //         } 
-        //     }
-
-        //     if (pickAttack === '1') {
-
-        //         if (whoGoesFirst === true) {
-        //             this.userDealsDamage(1);
-        //             this.computerDealsDamage(1)
-        //             this.optionsScreen()
-        //         } else if (whoGoesFirst === false) {
-        //             this.computerDealsDamage(1)
-        //             this.userDealsDamage(1);
-        //             this.optionsScreen()
-        //         } 
-        //     }
-
-        //     if (pickAttack === '2') {
-
-        //         if (whoGoesFirst === true) {
-        //             this.userDealsDamage(2);
-        //             this.computerDealsDamage(2)
-        //             this.optionsScreen()
-        //         } else if (whoGoesFirst === false) {
-        //             this.computerDealsDamage(2)
-        //             this.userDealsDamage(2);
-        //             this.optionsScreen()
-        //         }
-        //     }
-
-        //     if (pickAttack === '3') {
-
-        //         if (whoGoesFirst === true) {
-        //             this.userDealsDamage(3);
-        //             this.computerDealsDamage(3);
-        //             this.optionsScreen();
-        //         } else if (whoGoesFirst === false) {
-        //             this.computerDealsDamage(3);
-        //             this.userDealsDamage(3);
-        //             this.optionsScreen();
-        //         } 
-        //     }
-
-        // } else if (attackInput === 'run') {
-        //     alert('REFRESH THE PAGE TO START A NEW GAME.')
-
-        // }
 
     }
 
@@ -969,35 +934,46 @@ class trainers {
 
         // Displays Health
         let cpuHealth = document.querySelector('#cpuHealth')
-        cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat}`
+        cpuHealth.style.marginLeft = '500px'
+        cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat} HP`
 
         let cpuSpriteField = document.querySelector('#cpuSprite')
         let cpuSprite = document.createElement('img')
         cpuSprite.src = `${this.bg[1].frontImage}`
+        cpuSprite.style.width = '300px'
+        cpuSprite.style.height = '300px'
+        cpuSprite.style.marginLeft = '500px'
         cpuSpriteField.append(cpuSprite)
 
         let userHealth = document.querySelector('#userHealth')
-        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat}`
+        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
 
         let userSpriteField = document.querySelector('#userSprite')
         let userSprite = document.createElement('img')
         userSprite.src = `${this.bg[0].backImage}`
+        userSprite.style.width = '300px'
+        userSprite.style.height = '300px'
         userSpriteField.append(userSprite)
 
 
-        let introCPUText = document.createElement('p')
-        introCPUText.innerHTML = `CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`
-        gameTextBox.append(introCPUText)
+        // let introCPUText = document.createElement('p')
+        // introCPUText.innerHTML = `CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`
+        // gameTextBox.append(introCPUText)
 
-        let introUserText = document.createElement('p')
-        introUserText.innerHTML = `Go! ${this.pokemonParty[0].name.toUpperCase()}!`
-        gameTextBox.append(introUserText)
+        alert(`CPU wants to battle!`) 
+        alert(`CPU sent out ${this.bg[1].name.toUpperCase()}`)
+
+            // let introUserText = document.createElement('p')
+            // introUserText.innerHTML = `Go! ${this.pokemonParty[0].name.toUpperCase()}!`
+            // gameTextBox.append(introUserText)
+
+
+        alert(`Go! ${this.pokemonParty[0].name.toUpperCase()}!`)
 
 
         console.log(this.bg)
-
-        console.log(`Computer sent out ${this.bg[1].name}!`)
-        console.log(`${this.bg[0].name} I choose you!`)
+        console.log(`CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`)
+        console.log(`Go! ${this.pokemonParty[0].name.toUpperCase()}!`)
         console.log(`${this.bg[0].name} HP: ${this.bg[0].stats[0].base_stat} \n${this.bg[1].name} HP: ${this.bg[1].stats[0].base_stat}`)
 
         this.optionsScreen()
@@ -1009,6 +985,9 @@ class trainers {
 
 
 const jrk = new trainers('User')
+
+
+
 
 // Grabs Pokemon Data from PokeAPI
 pokemon = [];
@@ -1043,6 +1022,9 @@ async function getMoves() {
     }
 }
 getMoves()
+
+
+alert('Welcome to Pokemon Battle Arena by JRK!')
 
 
 console.log(pokemon)
@@ -1375,8 +1357,20 @@ let TYPE_CHART = {
 }
 
 
+
+
+
+
+
+
 let hideBattleScreen = document.querySelector('#battleScreen')
 hideBattleScreen.style.display = 'none';
+
+
+
+
+
+
 
 
 // Standard buttons here:
