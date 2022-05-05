@@ -212,6 +212,7 @@ class trainers {
 
             }
             
+            alert(`You added ${curPoke.name.toUpperCase()} to your party!`)
             console.log(curPoke)
             jrk.pokemonParty.push(curPoke)
 
@@ -453,6 +454,7 @@ class trainers {
 
             }
             
+            alert(`You added ${curPoke.name.toUpperCase()} to the CPU party!`)
             console.log(curPoke)
             jrk.computerParty.push(curPoke)
             
