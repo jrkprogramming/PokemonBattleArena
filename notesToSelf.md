@@ -46,3 +46,10 @@ did a lot of testing the types and moves to make sure they were accurate.
 
 
 Things I Learned: 
+
+
+
+
+moar bugs:
+- move buttons are not updating to new pokemon being sent out.
+- trying to implement having multiple pokemon in party. having bugs where the turn based is off.

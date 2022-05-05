@@ -594,8 +594,6 @@ class trainers {
             let userDefense = this.bg[0].stats[2].base_stat;
             let userSpeed = this.bg[0].stats[5].base_stat;
 
-            let randomNumIndex = (Math.round(Math.random() * 38) + 255)
-
             let computerPokemonName = this.bg[1].name;
             let computerHP = this.bg[1].stats[0].base_stat;
             let computerDefense = this.bg[1].stats[2].base_stat
@@ -644,6 +642,7 @@ class trainers {
                 alert('It was not very effective...')
             }
             
+            
 
             // console.log(`User did ${damage} damage`)
             // alert(`User did ${damage} damage`)
@@ -652,11 +651,20 @@ class trainers {
 
 
         // CHECKING FOR WINNER AND IF A POKEMON FAINTS  
+
+        // let whoGoesFirst = this.checkSpeed()
+
+        if (jrk.bg[1].stats[0].base_stat >= 0 && this.checkSpeed() === true) {
+
+            jrk.computerDealsDamage();
+
+            }
+
         if (this.bg[0].stats[0].base_stat <= 0) {
 
             console.log(`${userPokemonName.toUpperCase()} fainted!`)
-            this.bg.shift()
-            this.pokemonParty.shift()
+            jrk.bg.shift()
+            jrk.pokemonParty.shift()
 
              if (this.pokemonParty.length === 0) {
                 console.log("Oh no! I'm out of Pokemon! *Blacks out*")
@@ -665,17 +673,35 @@ class trainers {
                 
                 // GAME OVER
             } else {
+
                 this.bg.splice(0,0,this.pokemonParty[0])
+
                 console.log(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
                 alert(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
+
+                let userHealth = document.querySelector('#userHealth')
+                userHealth.style.fontSize = '30px'
+                userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
+        
+                // let userSpriteField = document.querySelector('#userSprite')
+                let userSprite = document.querySelector('#userSpritePic')
+                userSprite.src = `${this.bg[0].backImage}`
+                userSprite.style.width = '300px'
+                userSprite.style.height = '300px'
+
+                // Updates Buttons HTML to correct move names.
+                jrk.optionsScreen()
+
             }
 
         } else if (this.bg[1].stats[0].base_stat <= 0) {
 
-            console.log(`${computerPokemonName.toUpperCase()} fainted!`)
-            alert(`${computerPokemonName.toUpperCase()} fainted!`)
+            console.log(`Foe ${computerPokemonName.toUpperCase()} fainted!`)
+            alert(`Foe ${computerPokemonName.toUpperCase()} fainted!`)
             this.bg.pop()
+            console.log(this.computerParty)
             this.computerParty.shift()
+            console.log(this.computerParty)
             
             if (this.computerParty.length === 0) {
                 document.body.style.display = 'none';
@@ -688,36 +714,39 @@ class trainers {
             } else {
 
                 this.bg.push(this.computerParty[0])
+                console.log(this.computerParty[0])
+                console.log(this.bg)
 
                 console.log(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
                 alert(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
 
                 let cpuHealth = document.querySelector('#cpuHealth')
                 cpuHealth.style.marginLeft = '600px'
+                cpuHealth.style.fontSize = '30px'
                 cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].stats[0].base_stat} HP`
 
-                let cpuSpriteField = document.querySelector('#cpuSprite')
-                let cpuSprite = document.createElement('img')
-                cpuSprite.src = `${jrk.computerParty[0].frontImage}`
+                let cpuSprite = document.querySelector('#cpuSpritePic')
+                cpuSprite.src = `${this.bg[1].frontImage}`
                 cpuSprite.style.width = '300px'
                 cpuSprite.style.height = '300px'
                 cpuSprite.style.marginLeft = '600px'
-                cpuSpriteField.append(cpuSprite)
 
-                alert('should stop to pick choice')
-
-                return
+                
             }
 
         }
     }
 
-    computerDealsDamage = (userMoveIndex) => {
+    computerDealsDamage = (moveIndex) => {
 
+        // let userMoveChoice = moveIndex;
 
         let computerChoosesRandomMove = Math.floor(Math.random() * 3)
 
         let cpuTypeMultiplier = this.calculateComputerTypeMultiplier(computerChoosesRandomMove);
+
+        console.log(`${this.bg[1].name} used ${this.bg[1].moveSet[computerChoosesRandomMove].name}!`)
+        alert(`${this.bg[1].name.toUpperCase()} used ${this.bg[1].moveSet[computerChoosesRandomMove].name.toUpperCase()}!`)
 
         // let computerChoosesRandomMove = Math.floor(Math.random() * 3)
 
@@ -737,16 +766,26 @@ class trainers {
 
         let computerMovePower = this.bg[1].moveSet[computerChoosesRandomMove].power
     
-        let firstForm = Math.round(2 * computerLevel)
-        let secondForm = Math.round(firstForm / 7)
-        let thirdForm = Math.round(secondForm * computerAttack * computerMovePower)
-        let fourthForm = Math.round(thirdForm / userDefense)
-        let fifthForm = Math.round(fourthForm / 50)
-        let sixthForm = Math.round(fifthForm + 2)
-        let seventhForm = Math.round(sixthForm * cpuTypeMultiplier / 10)
-        let eighthForm = Math.round(seventhForm * randomNumIndex)
-        let damage = Math.round(eighthForm / 255)
+        // let firstForm = Math.round(2 * computerLevel)
+        // let secondForm = Math.round(firstForm / 7)
+        // let thirdForm = Math.round(secondForm * computerAttack * computerMovePower)
+        // let fourthForm = Math.round(thirdForm / userDefense)
+        // let fifthForm = Math.round(fourthForm / 50)
+        // let sixthForm = Math.round(fifthForm + 2)
+        // let seventhForm = Math.round(sixthForm * cpuTypeMultiplier / 10)
+        // let eighthForm = Math.round(seventhForm * randomNumIndex)
+        // let damage = Math.round(eighthForm / 255)
 
+
+        let firstForm = Math.round(2 * computerLevel);
+        let secondForm = Math.round(firstForm / 5);
+        let thirdForm = Math.round(secondForm + 2);
+        let fourthForm = Math.round(thirdForm * computerMovePower)
+        let fifthForm = Math.round(fourthForm * computerAttack)
+        let sixthForm = Math.round(fifthForm / userDefense)
+        let seventhForm = Math.round(sixthForm / 50)
+        let eighthForm = Math.round(seventhForm + 2)
+        let damage = Math.round(eighthForm * cpuTypeMultiplier)
 
         // use damage to take away from HP and check if pokemon fainted
 
@@ -760,9 +799,6 @@ class trainers {
         console.log(`${userPokemonName} HP: ${this.bg[0].stats[0].base_stat} \n${computerPokemonName} HP: ${this.bg[1].stats[0].base_stat}`) 
 
 
-        console.log(`${this.bg[1].name} used ${this.bg[1].moveSet[computerChoosesRandomMove].name}!`)
-        alert(`${this.bg[1].name.toUpperCase()} used ${this.bg[1].moveSet[computerChoosesRandomMove].name.toUpperCase()}!`)
-
         if (cpuTypeMultiplier === 2) {
             console.log("It's super effective!")
             alert("It's super effective!")
@@ -775,33 +811,61 @@ class trainers {
         console.log(`CPU did ${damage} damage`)
 
 
-
+        console.log(this.bg)
         
         // CHECKING FOR WINNER AND IF A POKEMON FAINTS  
 
         //----------------------------------------------------------------
-        if (userHP <= 0) {
 
-            console.log(`${userPokemonName} fainted!`)
-            this.bg.shift()
-            this.pokemonParty.shift()
+        // let whoGoesFirst = this.checkSpeed()
+
+        if (this.bg[0].stats[0].base_stat >= 0 && this.checkSpeed() === false) {
+
+            jrk.userDealsDamage(moveIndex);
+            
+        }
+
+        if (this.bg[0].stats[0].base_stat <= 0) {
+
+            console.log(`${userPokemonName.toUpperCase()} fainted!`)
+            alert((`${userPokemonName.toUpperCase()} fainted!`))
+            jrk.bg.shift()
+            jrk.pokemonParty.shift()
 
              if (this.pokemonParty.length === 0) {
                 console.log("Oh no! I'm out of Pokemon! *Blacks out*")
                 alert("Oh no! I'm out of Pokemon! *Blacks out*")
                 
                 // GAME OVER
+
             } else {
+
+                console.log(this.bg)
                 this.bg.splice(0,0,this.pokemonParty[0])
-                console.log(`${this.name} sent out ${this.pokemonParty[0].name}`)
-                alert(`${this.name} sent out ${this.pokemonParty[0].name}`)
+                console.log(this.bg)
+                
+                console.log(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
+                alert(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
+
+                let userHealth = document.querySelector('#userHealth')
+                userHealth.style.fontSize = '30px'
+                userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
+        
+                // let userSpriteField = document.querySelector('#userSprite')
+                let userSprite = document.querySelector('#userSpritePic')
+                userSprite.src = `${this.bg[0].backImage}`
+                userSprite.style.width = '300px'
+                userSprite.style.height = '300px'
+
+                jrk.optionsScreen()
+
             }
 
 
 
-        } else if (computerHP <= 0) {
+        } else if (this.bg[1].stats[0].base_stat <= 0) {
 
-            console.log(`${computerPokemonName} fainted!`)
+            console.log(`${computerPokemonName.toUpperCase()} fainted!`)
             this.bg.pop()
             this.computerParty.shift()
             
@@ -823,19 +887,17 @@ class trainers {
 
                 let cpuHealth = document.querySelector('#cpuHealth')
                 cpuHealth.style.marginLeft = '600px'
+                cpuHealth.style.fontSize = '30px'
                 cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].stats[0].base_stat} HP`
 
-                let cpuSpriteField = document.querySelector('#cpuSprite')
-                let cpuSprite = document.createElement('img')
-                cpuSprite.src = `${jrk.computerParty[0].frontImage}`
+                let cpuSprite = document.querySelector('#cpuSpritePic')
+                cpuSprite.src = `${this.bg[1].frontImage}`
                 cpuSprite.style.width = '300px'
                 cpuSprite.style.height = '300px'
                 cpuSprite.style.marginLeft = '600px'
-                cpuSpriteField.append(cpuSprite)
-
-                return
             }
         }
+
         //----------------------------------------------------------------
     }
 
@@ -849,7 +911,7 @@ class trainers {
             // console.log('we faster')
             return true;
 
-        } else {
+        } else if (userSpeed < computerSpeed) {
 
             // console.log('we not faster')
             return false;
@@ -864,41 +926,31 @@ class trainers {
             let userMoveName2 = this.bg[0].moveSet[2].name;
             let userMoveName3 = this.bg[0].moveSet[3].name;
 
-    //    let battleScreen = document.querySelector('#battleScreen')
-    //    let gameOptions = document.querySelector('#gameOptions')
 
     // Instead of creating buttons in here, add them to HTML and query select them
 
         let whoGoesFirst = this.checkSpeed()
 
         let move0Btn = document.querySelector('#move0Btn')
-        move0Btn.innerHTML = `${userMoveName0.toUpperCase()}`
+        move0Btn.innerHTML = `${this.bg[0].moveSet[0].name.toUpperCase()}`
         move0Btn.style.padding = '45px 70px'
+
 
         move0Btn.addEventListener('click', function(e) {
 
             if (whoGoesFirst === true) {
-
-
                 jrk.userDealsDamage(0);
-                
-                jrk.computerDealsDamage(0);
-
-
                 // jrk.optionsScreen();
             } else if (whoGoesFirst === false) {
-
                 jrk.computerDealsDamage(0);
-
-                jrk.userDealsDamage(0);
-
+                // jrk.userDealsDamage(0);
                 // jrk.optionsScreen();
             } 
-        
         })
 
+
         let move1Btn = document.querySelector('#move1Btn')
-        move1Btn.innerHTML = `${userMoveName1.toUpperCase()}`
+        move1Btn.innerHTML = `${this.bg[0].moveSet[1].name.toUpperCase()}`
         move1Btn.style.padding = '45px 70px'
         console.log(move1Btn)
 
@@ -906,48 +958,45 @@ class trainers {
 
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(1);
-                jrk.computerDealsDamage(1)
-                jrk.optionsScreen()
+                // jrk.optionsScreen()
             } else if (whoGoesFirst === false) {
                 jrk.computerDealsDamage(1)
-                jrk.userDealsDamage(1);
-                jrk.optionsScreen()
+                // jrk.userDealsDamage(1);
+                // jrk.optionsScreen()
             } 
          
         })
 
         let move2Btn = document.querySelector('#move2Btn')
-        move2Btn.innerHTML = `${userMoveName2.toUpperCase()}`
+        move2Btn.innerHTML = `${this.bg[0].moveSet[2].name.toUpperCase()}`
         move2Btn.style.padding = '45px 70px'
 
         move2Btn.addEventListener('click', function(e) {
 
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(2);
-                jrk.computerDealsDamage(2)
-                jrk.optionsScreen()
+                // jrk.optionsScreen()
             } else if (whoGoesFirst === false) {
                 jrk.computerDealsDamage(2)
-                jrk.userDealsDamage(2);
-                jrk.optionsScreen()
+                // jrk.userDealsDamage(2);
+                // jrk.optionsScreen()
             } 
         
         })
 
         let move3Btn = document.querySelector('#move3Btn')
-        move3Btn.innerHTML = `${userMoveName3.toUpperCase()}`
+        move3Btn.innerHTML = `${this.bg[0].moveSet[3].name.toUpperCase()}`
         move3Btn.style.padding = '45px 70px'
 
         move3Btn.addEventListener('click', function(e) {
 
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(3);
-                jrk.computerDealsDamage(3)
-                jrk.optionsScreen()
+                // jrk.optionsScreen()
             } else if (whoGoesFirst === false) {
                 jrk.computerDealsDamage(3)
-                jrk.userDealsDamage(3);
-                jrk.optionsScreen()
+                // jrk.userDealsDamage(3);
+                // jrk.optionsScreen()
             } 
         })
 
@@ -982,32 +1031,33 @@ class trainers {
         // Displays Health
         let cpuHealth = document.querySelector('#cpuHealth')
         cpuHealth.style.marginLeft = '600px'
+        cpuHealth.style.fontSize = '30px'
         cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat} HP`
 
-        let cpuSpriteField = document.querySelector('#cpuSprite')
-        let cpuSprite = document.createElement('img')
+        // let cpuSpriteField = document.querySelector('#cpuSprite')
+        let cpuSprite = document.querySelector('#cpuSpritePic')
         cpuSprite.src = `${this.bg[1].frontImage}`
         cpuSprite.style.width = '300px'
         cpuSprite.style.height = '300px'
         cpuSprite.style.marginLeft = '600px'
-        cpuSpriteField.append(cpuSprite)
+        // cpuSpriteField.append(cpuSprite)
 
         let userHealth = document.querySelector('#userHealth')
+        userHealth.style.fontSize = '30px'
         userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
 
-        let userSpriteField = document.querySelector('#userSprite')
-        let userSprite = document.createElement('img')
+        // let userSpriteField = document.querySelector('#userSprite')
+        let userSprite = document.querySelector('#userSpritePic')
         userSprite.src = `${this.bg[0].backImage}`
         userSprite.style.width = '300px'
         userSprite.style.height = '300px'
-        userSpriteField.append(userSprite)
 
 
         // let introCPUText = document.createElement('p')
         // introCPUText.innerHTML = `CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`
         // gameTextBox.append(introCPUText)
 
-        alert(`CPU wants to battle!`) 
+        alert(`CPU wants to battle!`)
         alert(`CPU sent out ${this.bg[1].name.toUpperCase()}`)
 
             // let introUserText = document.createElement('p')
