@@ -591,13 +591,13 @@ class trainers {
 
             let userPokemonName = this.bg[0].name;
             let userLevel = this.bg[0].level;
-            let userHP = this.bg[0].stats[0].base_stat;
+            let userHP = this.bg[0].HP;
             let userAttack = this.bg[0].stats[1].base_stat;
             let userDefense = this.bg[0].stats[2].base_stat;
             let userSpeed = this.bg[0].stats[5].base_stat;
 
             let computerPokemonName = this.bg[1].name;
-            let computerHP = this.bg[1].stats[0].base_stat;
+            let computerHP = this.bg[1].HP;
             let computerDefense = this.bg[1].stats[2].base_stat
             let computerSpeed = this.bg[1].stats[5].base_stat;
     
@@ -624,11 +624,11 @@ class trainers {
             let damage = Math.round(eighthForm * userTypeMultiplier)
         
     
-            this.bg[1].stats[0].base_stat -= damage; 
+            this.bg[1].HP -= damage; 
 
             //updates cpu health after taking damage
             let cpuHealth = document.querySelector('#cpuHealth')
-            cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat} HP`
+            cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].HP} HP`
 
             console.log(`User did ${damage} damage`)
             // alert(`User did ${damage} damage`)
@@ -656,13 +656,13 @@ class trainers {
 
         // let whoGoesFirst = this.checkSpeed()
 
-        if (jrk.bg[1].stats[0].base_stat >= 0 && this.checkSpeed() === true) {
+        if (jrk.bg[1].HP >= 0 && this.checkSpeed() === true) {
 
             jrk.computerDealsDamage();
 
             }
 
-        if (this.bg[0].stats[0].base_stat <= 0) {
+        if (this.bg[0].HP <= 0) {
 
             console.log(`${userPokemonName.toUpperCase()} fainted!`)
             jrk.bg.shift()
@@ -683,7 +683,7 @@ class trainers {
 
                 let userHealth = document.querySelector('#userHealth')
                 userHealth.style.fontSize = '30px'
-                userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
+                userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
         
                 // let userSpriteField = document.querySelector('#userSprite')
                 let userSprite = document.querySelector('#userSpritePic')
@@ -696,7 +696,7 @@ class trainers {
 
             }
 
-        } else if (this.bg[1].stats[0].base_stat <= 0) {
+        } else if (this.bg[1].HP <= 0) {
 
             console.log(`Foe ${computerPokemonName.toUpperCase()} fainted!`)
             alert(`Foe ${computerPokemonName.toUpperCase()} fainted!`)
@@ -725,7 +725,7 @@ class trainers {
                 let cpuHealth = document.querySelector('#cpuHealth')
                 cpuHealth.style.marginLeft = '600px'
                 cpuHealth.style.fontSize = '30px'
-                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].stats[0].base_stat} HP`
+                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].HP} HP`
 
                 let cpuSprite = document.querySelector('#cpuSpritePic')
                 cpuSprite.src = `${this.bg[1].frontImage}`
@@ -754,7 +754,7 @@ class trainers {
 
         let computerPokemonName = this.bg[1].name;
         let computerLevel = this.bg[1].level;
-        let computerHP = this.bg[1].stats[0].base_stat;
+        let computerHP = this.bg[1].HP;
         let computerAttack = this.bg[1].stats[1].base_stat;
         let computerDefense = this.bg[1].stats[2].base_stat;
         let computerSpeed = this.bg[1].stats[5].base_stat;
@@ -762,7 +762,7 @@ class trainers {
         let randomNumIndex = (Math.round(Math.random() * 38) + 255)
 
         let userPokemonName = this.bg[0].name;
-        let userHP = this.bg[0].stats[0].base_stat;
+        let userHP = this.bg[0].HP;
         let userDefense = this.bg[0].stats[2].base_stat
         let userSpeed = this.bg[0].stats[5].base_stat;
 
@@ -791,14 +791,14 @@ class trainers {
 
         // use damage to take away from HP and check if pokemon fainted
 
-        this.bg[0].stats[0].base_stat -= damage; 
+        this.bg[0].HP -= damage; 
 
         // updates user health on screen after taking damage
         let userHealth = document.querySelector('#userHealth')
-        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
+        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
 
         console.log(`CPU did ${damage} damage`)
-        console.log(`${userPokemonName} HP: ${this.bg[0].stats[0].base_stat} \n${computerPokemonName} HP: ${this.bg[1].stats[0].base_stat}`) 
+        console.log(`${userPokemonName} HP: ${this.bg[0].HP} \n${computerPokemonName} HP: ${this.bg[1].HP}`) 
 
 
         if (cpuTypeMultiplier === 2) {
@@ -821,13 +821,13 @@ class trainers {
 
         // let whoGoesFirst = this.checkSpeed()
 
-        if (this.bg[0].stats[0].base_stat >= 0 && this.checkSpeed() === false) {
+        if (this.bg[0].HP >= 0 && this.checkSpeed() === false) {
 
             jrk.userDealsDamage(moveIndex);
             
         }
 
-        if (this.bg[0].stats[0].base_stat <= 0) {
+        if (this.bg[0].HP <= 0) {
 
             console.log(`${userPokemonName.toUpperCase()} fainted!`)
             alert((`${userPokemonName.toUpperCase()} fainted!`))
@@ -851,7 +851,7 @@ class trainers {
 
                 let userHealth = document.querySelector('#userHealth')
                 userHealth.style.fontSize = '30px'
-                userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
+                userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
         
                 // let userSpriteField = document.querySelector('#userSprite')
                 let userSprite = document.querySelector('#userSpritePic')
@@ -890,7 +890,7 @@ class trainers {
                 let cpuHealth = document.querySelector('#cpuHealth')
                 cpuHealth.style.marginLeft = '600px'
                 cpuHealth.style.fontSize = '30px'
-                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].stats[0].base_stat} HP`
+                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].HP} HP`
 
                 let cpuSprite = document.querySelector('#cpuSpritePic')
                 cpuSprite.src = `${this.bg[1].frontImage}`
@@ -1034,7 +1034,7 @@ class trainers {
         let cpuHealth = document.querySelector('#cpuHealth')
         cpuHealth.style.marginLeft = '600px'
         cpuHealth.style.fontSize = '30px'
-        cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].stats[0].base_stat} HP`
+        cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].HP} HP`
 
         // let cpuSpriteField = document.querySelector('#cpuSprite')
         let cpuSprite = document.querySelector('#cpuSpritePic')
@@ -1046,7 +1046,7 @@ class trainers {
 
         let userHealth = document.querySelector('#userHealth')
         userHealth.style.fontSize = '30px'
-        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].stats[0].base_stat} HP`
+        userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
 
         // let userSpriteField = document.querySelector('#userSprite')
         let userSprite = document.querySelector('#userSpritePic')
@@ -1073,7 +1073,7 @@ class trainers {
         console.log(this.bg)
         console.log(`CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`)
         console.log(`Go! ${this.pokemonParty[0].name.toUpperCase()}!`)
-        console.log(`${this.bg[0].name} HP: ${this.bg[0].stats[0].base_stat} \n${this.bg[1].name} HP: ${this.bg[1].stats[0].base_stat}`)
+        console.log(`${this.bg[0].name} HP: ${this.bg[0].HP} \n${this.bg[1].name} HP: ${this.bg[1].HP}`)
 
         this.optionsScreen()
     }
@@ -1103,7 +1103,8 @@ pokemonList.map(function(pokeName) {
       moves: res.moves,
       moveSet: [], 
       stats: res.stats,
-      level: 50,
+      level: 100,
+      HP: ((res.stats[0].base_stat * 2) + 110),
       frontImage: res.sprites.front_default,
       backImage: res.sprites.back_default 
     });
