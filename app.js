@@ -602,16 +602,6 @@ class trainers {
             let computerSpeed = this.bg[1].stats[5].base_stat;
     
             let userMovePower = this.bg[0].moveSet[moveIndex].power;
-        
-            // let firstForm = Math.round(2 * userLevel)
-            // let secondForm = Math.round(firstForm / 7)
-            // let thirdForm = Math.round(secondForm * userAttack * userMovePower)
-            // let fourthForm = Math.round(thirdForm / computerDefense)
-            // let fifthForm = Math.round(fourthForm / 50)
-            // let sixthForm = Math.round(fifthForm + 2)
-            // let seventhForm = Math.round(sixthForm * userTypeMultiplier / 10)
-            // let eighthForm = Math.round(seventhForm * randomNumIndex)
-            // let damage = Math.round(eighthForm / 255)
 
             let firstForm = Math.round(2 * userLevel);
             let secondForm = Math.round(firstForm / 5);
@@ -642,13 +632,7 @@ class trainers {
             } else if (userTypeMultiplier === 0.5) {
                 console.log('It was not very effective...')
                 alert('It was not very effective...')
-            }
-            
-            
-
-            // console.log(`User did ${damage} damage`)
-            // alert(`User did ${damage} damage`)
-            // console.log(`${userPokemonName} HP: ${userHP} \n${computerPokemonName} HP: ${computerHP}`)           
+            }          
 
 
 
@@ -656,11 +640,14 @@ class trainers {
 
         // let whoGoesFirst = this.checkSpeed()
 
-        if (jrk.bg[1].HP >= 0 && this.checkSpeed() === true) {
+        if (jrk.bg[1].HP >= 0) {
+            let whoGoesFirst = this.checkSpeed()
+            if (whoGoesFirst === true) {
 
-            jrk.computerDealsDamage();
+            this.computerDealsDamage();
 
             }
+        }
 
         if (this.bg[0].HP <= 0) {
 
@@ -681,18 +668,35 @@ class trainers {
                 console.log(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
                 alert(`${this.name} sent out ${this.pokemonParty[0].name.toUpperCase()}`)
 
+                // Updates user Health
                 let userHealth = document.querySelector('#userHealth')
                 userHealth.style.fontSize = '30px'
                 userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
         
                 // let userSpriteField = document.querySelector('#userSprite')
+                // Updates user Sprite
                 let userSprite = document.querySelector('#userSpritePic')
                 userSprite.src = `${this.bg[0].backImage}`
                 userSprite.style.width = '300px'
                 userSprite.style.height = '300px'
 
                 // Updates Buttons HTML to correct move names.
-                jrk.optionsScreen()
+
+                let move0Btn = document.querySelector('#move0Btn')
+                move0Btn.innerHTML = `${this.bg[0].moveSet[0].name.toUpperCase()}`
+                move0Btn.style.padding = '45px 70px'
+
+                let move1Btn = document.querySelector('#move1Btn')
+                move1Btn.innerHTML = `${this.bg[0].moveSet[1].name.toUpperCase()}`
+                move1Btn.style.padding = '45px 70px'
+
+                let move2Btn = document.querySelector('#move2Btn')
+                move2Btn.innerHTML = `${this.bg[0].moveSet[2].name.toUpperCase()}`
+                move2Btn.style.padding = '45px 70px'
+
+                let move3Btn = document.querySelector('#move3Btn')
+                move3Btn.innerHTML = `${this.bg[0].moveSet[3].name.toUpperCase()}`
+                move3Btn.style.padding = '45px 70px'
 
             }
 
@@ -736,7 +740,9 @@ class trainers {
                 
             }
 
+            
         }
+        
     }
 
     computerDealsDamage = (moveIndex) => {
@@ -766,18 +772,7 @@ class trainers {
         let userDefense = this.bg[0].stats[2].base_stat
         let userSpeed = this.bg[0].stats[5].base_stat;
 
-        let computerMovePower = this.bg[1].moveSet[computerChoosesRandomMove].power
-    
-        // let firstForm = Math.round(2 * computerLevel)
-        // let secondForm = Math.round(firstForm / 7)
-        // let thirdForm = Math.round(secondForm * computerAttack * computerMovePower)
-        // let fourthForm = Math.round(thirdForm / userDefense)
-        // let fifthForm = Math.round(fourthForm / 50)
-        // let sixthForm = Math.round(fifthForm + 2)
-        // let seventhForm = Math.round(sixthForm * cpuTypeMultiplier / 10)
-        // let eighthForm = Math.round(seventhForm * randomNumIndex)
-        // let damage = Math.round(eighthForm / 255)
-
+        let computerMovePower = this.bg[1].moveSet[computerChoosesRandomMove].power;
 
         let firstForm = Math.round(2 * computerLevel);
         let secondForm = Math.round(firstForm / 5);
@@ -821,11 +816,14 @@ class trainers {
 
         // let whoGoesFirst = this.checkSpeed()
 
-        if (this.bg[0].HP >= 0 && this.checkSpeed() === false) {
+        if (this.bg[0].HP >= 0) {
+            let whoGoesFirst = jrk.checkSpeed()
+            if(whoGoesFirst === false) {
 
-            jrk.userDealsDamage(moveIndex);
+            this.userDealsDamage(moveIndex);
             
         }
+    }
 
         if (this.bg[0].HP <= 0) {
 
@@ -837,6 +835,7 @@ class trainers {
              if (this.pokemonParty.length === 0) {
                 console.log("Oh no! I'm out of Pokemon! *Blacks out*")
                 alert("Oh no! I'm out of Pokemon! *Blacks out*")
+                document.body.style.display = 'none';
                 
                 // GAME OVER
 
@@ -859,22 +858,36 @@ class trainers {
                 userSprite.style.width = '300px'
                 userSprite.style.height = '300px'
 
-                jrk.optionsScreen()
+                let move0Btn = document.querySelector('#move0Btn')
+                move0Btn.innerHTML = `${this.bg[0].moveSet[0].name.toUpperCase()}`
+                move0Btn.style.padding = '45px 70px'
+
+                let move1Btn = document.querySelector('#move1Btn')
+                move1Btn.innerHTML = `${this.bg[0].moveSet[1].name.toUpperCase()}`
+                move1Btn.style.padding = '45px 70px'
+
+                let move2Btn = document.querySelector('#move2Btn')
+                move2Btn.innerHTML = `${this.bg[0].moveSet[2].name.toUpperCase()}`
+                move2Btn.style.padding = '45px 70px'
+
+                let move3Btn = document.querySelector('#move3Btn')
+                move3Btn.innerHTML = `${this.bg[0].moveSet[3].name.toUpperCase()}`
+                move3Btn.style.padding = '45px 70px'
+
+                // jrk.optionsScreen()
 
             }
 
 
-
+            // if CPU dies
         } else if (this.bg[1].stats[0].base_stat <= 0) {
 
-            console.log(`${computerPokemonName.toUpperCase()} fainted!`)
             this.bg.pop()
             this.computerParty.shift()
             
             if (this.computerParty.length === 0) {
                 document.body.style.display = 'none';
 
-                console.log(`${this.name} defeated CPU!`)
                 alert(`${this.name} defeated CPU!`)
                 
                 // GAME OVER
@@ -882,7 +895,6 @@ class trainers {
 
 
                 this.bg.push(jrk.computerParty[0])
-                // switch to 1 if it dont work
 
                 console.log(`CPU sent out ${jrk.computerParty[0].name.toUpperCase()}`)
                 alert(`CPU sent out ${jrk.computerParty[0].name.toUpperCase()}`)
@@ -897,23 +909,26 @@ class trainers {
                 cpuSprite.style.width = '300px'
                 cpuSprite.style.height = '300px'
                 cpuSprite.style.marginLeft = '600px'
+        
             }
+            
         }
+
 
         //----------------------------------------------------------------
     }
 
     checkSpeed = () => {
 
-        let userSpeed = this.bg[0].stats[5].base_stat;
-        let computerSpeed = this.bg[1].stats[5].base_stat;
+        // let userSpeed = this.bg[0].stats[5].base_stat;
+        // let computerSpeed = this.bg[1].stats[5].base_stat;
 
-        if (userSpeed > computerSpeed) {
+        if (this.bg[0].stats[5].base_stat > this.bg[1].stats[5].base_stat) {
 
             // console.log('we faster')
             return true;
 
-        } else if (userSpeed < computerSpeed) {
+        } else if (this.bg[0].stats[5].base_stat < this.bg[1].stats[5].base_stat) {
 
             // console.log('we not faster')
             return false;
@@ -923,15 +938,17 @@ class trainers {
      
     optionsScreen = () => {
 
-            let userMoveName0 = this.bg[0].moveSet[0].name;
-            let userMoveName1 = this.bg[0].moveSet[1].name;
-            let userMoveName2 = this.bg[0].moveSet[2].name;
-            let userMoveName3 = this.bg[0].moveSet[3].name;
+        // Need to constantly check speed because when new pokemon gets sent out, I dont think check speed is being updated.
+
+            // let userMoveName0 = this.bg[0].moveSet[0].name;
+            // let userMoveName1 = this.bg[0].moveSet[1].name;
+            // let userMoveName2 = this.bg[0].moveSet[2].name;
+            // let userMoveName3 = this.bg[0].moveSet[3].name;
 
 
     // Instead of creating buttons in here, add them to HTML and query select them
 
-        let whoGoesFirst = this.checkSpeed()
+        // let whoGoesFirst = this.checkSpeed()
 
         let move0Btn = document.querySelector('#move0Btn')
         move0Btn.innerHTML = `${this.bg[0].moveSet[0].name.toUpperCase()}`
@@ -939,6 +956,8 @@ class trainers {
 
 
         move0Btn.addEventListener('click', function(e) {
+
+            let whoGoesFirst = jrk.checkSpeed()
 
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(0);
@@ -958,6 +977,8 @@ class trainers {
 
         move1Btn.addEventListener('click', function(e) {
 
+            let whoGoesFirst = jrk.checkSpeed()
+
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(1);
                 // jrk.optionsScreen()
@@ -975,6 +996,8 @@ class trainers {
 
         move2Btn.addEventListener('click', function(e) {
 
+            let whoGoesFirst = jrk.checkSpeed()
+
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(2);
                 // jrk.optionsScreen()
@@ -991,6 +1014,8 @@ class trainers {
         move3Btn.style.padding = '45px 70px'
 
         move3Btn.addEventListener('click', function(e) {
+
+            let whoGoesFirst = jrk.checkSpeed()
 
             if (whoGoesFirst === true) {
                 jrk.userDealsDamage(3);
