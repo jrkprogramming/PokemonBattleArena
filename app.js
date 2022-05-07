@@ -1084,7 +1084,7 @@ alert('Welcome to Pokemon Battle Arena by JRK!')
 console.log(pokemon)
 
 
-// import this
+// reference: https://gist.github.com/agarie/2620966
 let TYPE_CHART = {
     "normal": {
       "normal": 1,
