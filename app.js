@@ -624,13 +624,15 @@ class trainers {
                 // Updates user Health
                 let userHealth = document.querySelector('#userHealth')
                 userHealth.style.fontSize = '30px'
+                userHealth.style.marginLeft = '2%'
                 userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
         
-                // Updates user Sprite
+        
                 let userSprite = document.querySelector('#userSpritePic')
                 userSprite.src = `${this.bg[0].backImage}`
-                userSprite.style.width = '300px'
-                userSprite.style.height = '300px'
+                userSprite.style.width = '400px'
+                userSprite.style.height = '400px'
+                userSprite.margin = '50%'
 
                 // Updates Buttons HTML to correct move names.
 
@@ -676,15 +678,18 @@ class trainers {
                 alert(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
 
                 let cpuHealth = document.querySelector('#cpuHealth')
-                cpuHealth.style.marginLeft = '600px'
+                cpuHealth.style.marginLeft = '60%'
                 cpuHealth.style.fontSize = '30px'
-                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].HP} HP`
-
+                cpuHealth.style.marginTop = '10%'
+                cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].HP} HP`
+        
+        
                 let cpuSprite = document.querySelector('#cpuSpritePic')
                 cpuSprite.src = `${this.bg[1].frontImage}`
-                cpuSprite.style.width = '300px'
-                cpuSprite.style.height = '300px'
-                cpuSprite.style.marginLeft = '600px'
+                cpuSprite.style.width = '400px'
+                cpuSprite.style.height = '400px'
+                cpuSprite.style.marginLeft = '60%'
+                cpuSprite.style.marginTop = '5%'
 
                 
             }
@@ -796,13 +801,15 @@ class trainers {
 
                 let userHealth = document.querySelector('#userHealth')
                 userHealth.style.fontSize = '30px'
+                userHealth.style.marginLeft = '2%'
                 userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
         
-
+        
                 let userSprite = document.querySelector('#userSpritePic')
                 userSprite.src = `${this.bg[0].backImage}`
-                userSprite.style.width = '300px'
-                userSprite.style.height = '300px'
+                userSprite.style.width = '400px'
+                userSprite.style.height = '400px'
+                userSprite.margin = '50%'
 
                 let move0Btn = document.querySelector('#move0Btn')
                 move0Btn.innerHTML = `${this.bg[0].moveSet[0].name.toUpperCase()}`
@@ -845,15 +852,18 @@ class trainers {
                 alert(`CPU sent out ${jrk.computerParty[0].name.toUpperCase()}`)
 
                 let cpuHealth = document.querySelector('#cpuHealth')
-                cpuHealth.style.marginLeft = '600px'
+                cpuHealth.style.marginLeft = '60%'
                 cpuHealth.style.fontSize = '30px'
-                cpuHealth.innerHTML = `${jrk.computerParty[0].name.toUpperCase()}: ${jrk.computerParty[0].HP} HP`
-
+                cpuHealth.style.marginTop = '10%'
+                cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].HP} HP`
+        
+        
                 let cpuSprite = document.querySelector('#cpuSpritePic')
                 cpuSprite.src = `${this.bg[1].frontImage}`
-                cpuSprite.style.width = '300px'
-                cpuSprite.style.height = '300px'
-                cpuSprite.style.marginLeft = '600px'
+                cpuSprite.style.width = '400px'
+                cpuSprite.style.height = '400px'
+                cpuSprite.style.marginLeft = '60%'
+                cpuSprite.style.marginTop = '5%'
         
             }
             
