@@ -2,10 +2,12 @@
 
 
 Project Description:
-My app is a Pokemon arena where a user can select 3 pokemon and choose 4 moves. The user can battle the pokemon they choose against a computer who randomly creates their team of pokemon. When a pokemon reaches 0 HP, the pokemon faints and the user has to choose the next pokemon to fight in the arena. (ALL POKEMON AND ALL MOVES ARE AVAILABLE)
+My app is a Pokemon arena where a user can select 3 pokemon and choose 4 moves. The user can battle the pokemon they choose and also choose the Pokemon and moves they go against. When a pokemon reaches 0 HP, the pokemon faints and the user sends out the next pokemon to fight in the arena. Once there is a winner or a loser, the site needs to be refreshed and the game will restart and User can select Pokemon again. (All Pokemon and moves are available)
+
 
 Technologies Used:
-This project is written in HTML, CSS, and vanilla JavaScript.
+HTML, CSS, JSON, and JavaScript.
+
 
 <b>Screenshots:</b>
 
@@ -59,4 +61,4 @@ Major Hurdles:
 - Constantly had random bugs whether it was data loading in weird or things returning undefined and making sure the code is following the flow of the original Pokemon games.
 - Didn't have a lot of practice with the DOM and CSS, so adding those elements to my game was a bit of a challenge.
 - The PokeAPI having all the data really made things easy, the hard part was accessing the data and being able to maniulate them and interacting with them.
-- Before having buttons for everything, I used prompts to get input from the user. The user would have to type in which Pokemon they wanted to add to their party and type which moves they wanted. Creating buttons was an obvious important feature. (And as you can tell it was a pain to test before having buttons.)
+- Before having buttons for everything, I used prompts to get input from the user. The user would have to type in which Pokemon they wanted to add to their party and type which moves they wanted. Creating buttons was an obvious, important feature. (And as you can tell it was a pain to test before having buttons.)
