@@ -1,4 +1,4 @@
-<b>POKEMON BATTLE ARENA</b>
+<b>POKEMON ARENA GAME </b>
 
 
 Project Description:
@@ -36,9 +36,27 @@ MVP Goals:
 Stretch Goals:
 
 - Add dual types to pokemon
-- Add animations to moves
+- Add more stages.
+- Upgrade from alert boxes and make a game text box on screen
+- Add animations to moves and sprites
 - Factor in accuracy into the battles
 - Incorporate berries/items
 - Incorporate special moves
 - User can change out pokemon
+- User should not be able to add the same move twice
+- Add loading screen so that User can't try to access a Pokemon that hasn't fully loaded yet
+- Display Party buttons need styling
 - Pokedex feature that has all the data on every pokemon
+
+
+Major Hurdles:
+
+- Manipulating data within a class and making sure to carry the data throughout the methods as intended was tricky.
+- A lot of the times, the fetched data from the PokeAPI would return undefined so I had to play with code to get it to work.
+- Difficult to calculate Pokemon damage, because I don't include IVs and EVs and the base stats don't even scale to the level. (Kept the damage formula the way it is because the game has a good length with those metrics.)
+- The moves attached to the Pokemon data didn't have stats like power, accuracy, and type so i had to fetch all the moves that exist in the game and create a new array and compare the Pokemon moves to that 'all moves list' since that when the Pokemon get selected for battle, they have moves that have that data on them.
+- Found a nice list of the Type Chart on GitHub, but then I had to find a way to implement that into my damage formula.
+- Constantly had random bugs whether it was data loading in weird or things returning undefined and making sure the code is following the flow of the original Pokemon games.
+- Didn't have a lot of practice with the DOM and CSS, so adding those elements to my game was a bit of a challenge.
+- The PokeAPI having all the data really made things easy, the hard part was accessing the data and being able to maniulate them and interacting with them.
+- Before having buttons for everything, I used prompts to get input from the user. The user would have to type in which Pokemon they wanted to add to their party and type which moves they wanted. Creating buttons was an obvious important feature. (And as you can tell it was a pain to test before having buttons.)
