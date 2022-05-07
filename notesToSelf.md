@@ -2,7 +2,6 @@ Goals:
 
 - user should be able to pick which pokemon they want in their party.
 - user should then be able to choose which moves (total of 4) they want.
-
 - Create a drop down menu for pokemon and moves
 
 
@@ -34,10 +33,7 @@ https://codepen.io/jaflo/pen/AzgmQb
 bugs:
 - inputting multiple of the same pokemon/pokemon moves breaks the pokemon selection
 - 4/30 issue now is the health is not saving after iterations of moves.
-- need to uppercase all the names and moves
 - pokemon should not be able to learn the same move more than once.
-- calculate health
-
 
 implement accuracy?
 damge doesnt save into health
@@ -46,10 +42,3 @@ did a lot of testing the types and moves to make sure they were accurate.
 
 
 Things I Learned: 
-
-
-
-
-moar bugs:
-- move buttons are not updating to new pokemon being sent out.
-- trying to implement having multiple pokemon in party. having bugs where the turn based is off.

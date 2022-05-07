@@ -6,16 +6,13 @@ class trainers {
         this.bg = [];
     }
 
-
     selectUserPokemon =  () => {
 
         let pokemonList = [];
  
-        const M = 151;
-        // let pokemonList = Array.from({length: M}, (_, index) => index + 1);
+        const M = 386;
         
         let userField = document.querySelector('#userBar')
-
 
         let chooseYourPokemonText = document.createElement('h1')
         chooseYourPokemonText.innerHTML = 'Choose CPU Pokemon:'
@@ -26,7 +23,6 @@ class trainers {
          fetch(`https://pokeapi.co/api/v2/pokemon?limit=${M}&offset=0`)
             .then(res => res.json())
             .then((res) => {
-            // console.log(res.results)
             res.results.forEach(function(pokeName) {
                  fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName.name}`)
                  .then(res => res.json())
@@ -39,7 +35,7 @@ class trainers {
                 userSelectPokemonBtn.style.maxWidth = '110px';
                 userSelectPokemonBtn.innerHTML = `${pokeName.name.toUpperCase()}`;
 
-                // let userField = document.querySelector('#userBar')
+
                 userField.append(userSelectPokemonBtn)
 
                 let pokemonSprite = document.createElement('img')
@@ -57,8 +53,6 @@ class trainers {
 
                 let listOfPokemonBtn = document.querySelector('.userPokemonButtons')
                 listOfPokemonBtn.appendChild(userSelectPokemonBtn)
-                // userField.append(listOfPokemonBtn)
-
                 
                 userSelectPokemonBtn.addEventListener('click', function(e) {
 
@@ -89,8 +83,6 @@ class trainers {
     }
   
     selectUserMoves = (curPoke) => {
-
-         // This function pushes the move into moveSet array and should be avialable to use in battle.
 
          // API data takes a second to load
 
@@ -216,39 +208,7 @@ class trainers {
             console.log(curPoke)
             jrk.pokemonParty.push(curPoke)
 
-    
         })
-
-        
-
-
-
-                // =================================================================
-        
-        
-                // console.log(curPoke)
-        
-        
-        
-            //     for (let i=1; i<5; i++) {
-        
-            //     let chooseMove = prompt(`Choose Move ${i}`);
-        
-            //     let checkAllMoves = allMovesList.find(x => x.name === chooseMove)
-        
-            //     for (let j=0; j < curPoke.moves.length; j++) {
-            //         if (curPoke.moves[j].move.name === checkAllMoves.name) {
-            //             if (curPoke.moveSet.length < 4) {
-            //                 curPoke.moveSet.push(checkAllMoves); 
-            //             }
-            //         }
-            //     }
-            //     }
-        
-            //     jrk.pokemonParty.push(curPoke)
-        
-            // }
-
 
     }
 
@@ -256,8 +216,7 @@ class trainers {
 
         let pokemonList = [];
      
-        const M = 151;
-        // let pokemonList = Array.from({length: M}, (_, index) => index + 1);
+        const M = 386;
 
         let cpuField = document.querySelector('#cpuBar')
 
@@ -265,11 +224,9 @@ class trainers {
         chooseCPUPokemonText.innerHTML = 'Choose YOUR Pokemon:'
         cpuField.prepend(chooseCPUPokemonText)
     
-    
             fetch(`https://pokeapi.co/api/v2/pokemon?limit=${M}&offset=0`)
             .then(res => res.json())
             .then((res) => {
-                // console.log(res.results)
                 res.results.forEach(function(pokeName) {
                     fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName.name}`)
                     .then(res => res.json())
@@ -281,7 +238,6 @@ class trainers {
                     cpuSelectPokemonBtn.style.maxWidth = '110px';
                     cpuSelectPokemonBtn.innerHTML = `${pokeName.name.toUpperCase()}`;
 
-                    // let cpuField = document.querySelector('#cpuBar')
                     cpuField.append(cpuSelectPokemonBtn)
 
                     let pokemonSprite = document.createElement('img')
@@ -299,9 +255,7 @@ class trainers {
                     
                     let listOfPokemonBtn = document.querySelector('.cpuPokemonButtons')
                     listOfPokemonBtn.append(cpuSelectPokemonBtn)
-                    // cpuField.append(listOfPokemonBtn)
-    
-    
+
         
                     cpuSelectPokemonBtn.addEventListener('click', function(e) {
 
@@ -513,10 +467,13 @@ class trainers {
     }
     
     displayCPUParty = () => {
+
         console.log(this.computerParty)
 
         if (this.computerParty.length === 0) {
+
             alert('You have not selected any Pokemon!')
+
         } else {
 
 
@@ -568,11 +525,9 @@ class trainers {
     
     }
 
-    calculateComputerTypeMultiplier = (x) => {  
+    calculateComputerTypeMultiplier = (moveIndex) => {  
 
-        // let computerChoosesRandomMove = Math.floor(Math.random() * 3)
-
-        let cpuMoveType = this.bg[1].moveSet[x].moveType;
+        let cpuMoveType = this.bg[1].moveSet[moveIndex].moveType;
         let moveType = TYPE_CHART[cpuMoveType]
         let userType = this.bg[0].type;
         let theType = moveType[userType]
@@ -586,7 +541,6 @@ class trainers {
         let userTypeMultiplier = this.calculateUserTypeMultiplier(moveIndex);
         let userMoveName = this.bg[0].moveSet[moveIndex].name;
 
-        // POKEMON used MOVE!
         alert(`${this.bg[0].name.toUpperCase()} used ${userMoveName.toUpperCase()}`)
 
             let userPokemonName = this.bg[0].name;
@@ -620,8 +574,6 @@ class trainers {
             let cpuHealth = document.querySelector('#cpuHealth')
             cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].HP} HP`
 
-            console.log(`User did ${damage} damage`)
-            // alert(`User did ${damage} damage`)
 
             console.log(`${userPokemonName} HP: ${userHP} \n${computerPokemonName} HP: ${computerHP}`)   
             console.log(`${this.bg[0].name} used ${this.bg[0].moveSet[0].name}!`)
@@ -638,9 +590,9 @@ class trainers {
 
         // CHECKING FOR WINNER AND IF A POKEMON FAINTS  
 
-        // let whoGoesFirst = this.checkSpeed()
 
         if (jrk.bg[1].HP >= 0) {
+
             let whoGoesFirst = this.checkSpeed()
             if (whoGoesFirst === true) {
 
@@ -661,6 +613,7 @@ class trainers {
                 document.body.style.display = 'none';
                 
                 // GAME OVER
+
             } else {
 
                 this.bg.splice(0,0,this.pokemonParty[0])
@@ -673,7 +626,6 @@ class trainers {
                 userHealth.style.fontSize = '30px'
                 userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
         
-                // let userSpriteField = document.querySelector('#userSprite')
                 // Updates user Sprite
                 let userSprite = document.querySelector('#userSpritePic')
                 userSprite.src = `${this.bg[0].backImage}`
@@ -710,20 +662,17 @@ class trainers {
             console.log(this.computerParty)
             
             if (this.computerParty.length === 0) {
+
                 document.body.style.display = 'none';
-                console.log(`${this.name} defeated CPU!`)
                 alert(`${this.name} defeated CPU!`)
-                console.log('YOU WIN')
                 alert('YOU WIN')
                 
                 // GAME OVER
+
             } else {
 
                 this.bg.push(this.computerParty[0])
-                console.log(this.computerParty[0])
-                console.log(this.bg)
 
-                console.log(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
                 alert(`CPU sent out ${this.computerParty[0].name.toUpperCase()}`)
 
                 let cpuHealth = document.querySelector('#cpuHealth')
@@ -747,7 +696,6 @@ class trainers {
 
     computerDealsDamage = (moveIndex) => {
 
-        // let userMoveChoice = moveIndex;
 
         let computerChoosesRandomMove = Math.floor(Math.random() * 3)
 
@@ -756,7 +704,6 @@ class trainers {
         console.log(`${this.bg[1].name} used ${this.bg[1].moveSet[computerChoosesRandomMove].name}!`)
         alert(`${this.bg[1].name.toUpperCase()} used ${this.bg[1].moveSet[computerChoosesRandomMove].name.toUpperCase()}!`)
 
-        // let computerChoosesRandomMove = Math.floor(Math.random() * 3)
 
         let computerPokemonName = this.bg[1].name;
         let computerLevel = this.bg[1].level;
@@ -792,16 +739,15 @@ class trainers {
         let userHealth = document.querySelector('#userHealth')
         userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
 
-        console.log(`CPU did ${damage} damage`)
-        console.log(`${userPokemonName} HP: ${this.bg[0].HP} \n${computerPokemonName} HP: ${this.bg[1].HP}`) 
-
 
         if (cpuTypeMultiplier === 2) {
-            console.log("It's super effective!")
+
             alert("It's super effective!")
+
         } else if (cpuTypeMultiplier === 0.5) {
-            console.log("It's not very effective...")
+
             alert("It's not very effective...")
+
         }
 
         
@@ -812,9 +758,9 @@ class trainers {
         
         // CHECKING FOR WINNER AND IF A POKEMON FAINTS  
 
-        //----------------------------------------------------------------
 
-        // let whoGoesFirst = this.checkSpeed()
+
+
 
         if (this.bg[0].HP >= 0) {
             let whoGoesFirst = jrk.checkSpeed()
@@ -852,7 +798,7 @@ class trainers {
                 userHealth.style.fontSize = '30px'
                 userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
         
-                // let userSpriteField = document.querySelector('#userSprite')
+
                 let userSprite = document.querySelector('#userSpritePic')
                 userSprite.src = `${this.bg[0].backImage}`
                 userSprite.style.width = '300px'
@@ -874,7 +820,6 @@ class trainers {
                 move3Btn.innerHTML = `${this.bg[0].moveSet[3].name.toUpperCase()}`
                 move3Btn.style.padding = '45px 70px'
 
-                // jrk.optionsScreen()
 
             }
 
@@ -886,17 +831,17 @@ class trainers {
             this.computerParty.shift()
             
             if (this.computerParty.length === 0) {
-                document.body.style.display = 'none';
 
+                document.body.style.display = 'none';
                 alert(`${this.name} defeated CPU!`)
                 
                 // GAME OVER
+
             } else {
 
 
                 this.bg.push(jrk.computerParty[0])
 
-                console.log(`CPU sent out ${jrk.computerParty[0].name.toUpperCase()}`)
                 alert(`CPU sent out ${jrk.computerParty[0].name.toUpperCase()}`)
 
                 let cpuHealth = document.querySelector('#cpuHealth')
@@ -914,23 +859,17 @@ class trainers {
             
         }
 
-
-        //----------------------------------------------------------------
     }
 
     checkSpeed = () => {
 
-        // let userSpeed = this.bg[0].stats[5].base_stat;
-        // let computerSpeed = this.bg[1].stats[5].base_stat;
 
         if (this.bg[0].stats[5].base_stat > this.bg[1].stats[5].base_stat) {
 
-            // console.log('we faster')
             return true;
 
         } else if (this.bg[0].stats[5].base_stat < this.bg[1].stats[5].base_stat) {
 
-            // console.log('we not faster')
             return false;
 
         }
@@ -938,17 +877,10 @@ class trainers {
      
     optionsScreen = () => {
 
-        // Need to constantly check speed because when new pokemon gets sent out, I dont think check speed is being updated.
-
-            // let userMoveName0 = this.bg[0].moveSet[0].name;
-            // let userMoveName1 = this.bg[0].moveSet[1].name;
-            // let userMoveName2 = this.bg[0].moveSet[2].name;
-            // let userMoveName3 = this.bg[0].moveSet[3].name;
-
+    // Need to constantly check speed because when new pokemon gets sent out, I dont think check speed is being updated.
 
     // Instead of creating buttons in here, add them to HTML and query select them
 
-        // let whoGoesFirst = this.checkSpeed()
 
         let move0Btn = document.querySelector('#move0Btn')
         move0Btn.innerHTML = `${this.bg[0].moveSet[0].name.toUpperCase()}`
@@ -960,12 +892,13 @@ class trainers {
             let whoGoesFirst = jrk.checkSpeed()
 
             if (whoGoesFirst === true) {
+
                 jrk.userDealsDamage(0);
-                // jrk.optionsScreen();
+
             } else if (whoGoesFirst === false) {
+
                 jrk.computerDealsDamage(0);
-                // jrk.userDealsDamage(0);
-                // jrk.optionsScreen();
+
             } 
         })
 
@@ -980,12 +913,13 @@ class trainers {
             let whoGoesFirst = jrk.checkSpeed()
 
             if (whoGoesFirst === true) {
+
                 jrk.userDealsDamage(1);
-                // jrk.optionsScreen()
+
             } else if (whoGoesFirst === false) {
+
                 jrk.computerDealsDamage(1)
-                // jrk.userDealsDamage(1);
-                // jrk.optionsScreen()
+
             } 
          
         })
@@ -999,12 +933,13 @@ class trainers {
             let whoGoesFirst = jrk.checkSpeed()
 
             if (whoGoesFirst === true) {
+
                 jrk.userDealsDamage(2);
-                // jrk.optionsScreen()
+
             } else if (whoGoesFirst === false) {
+
                 jrk.computerDealsDamage(2)
-                // jrk.userDealsDamage(2);
-                // jrk.optionsScreen()
+
             } 
         
         })
@@ -1018,12 +953,13 @@ class trainers {
             let whoGoesFirst = jrk.checkSpeed()
 
             if (whoGoesFirst === true) {
+
                 jrk.userDealsDamage(3);
-                // jrk.optionsScreen()
+
             } else if (whoGoesFirst === false) {
+
                 jrk.computerDealsDamage(3)
-                // jrk.userDealsDamage(3);
-                // jrk.optionsScreen()
+
             } 
         })
 
@@ -1033,7 +969,6 @@ class trainers {
 
     battle = () => {
 
-        // working on transitioning to the battle screen
 
         let hideSelectScreen = document.querySelector('#selectScreen')
         hideSelectScreen.style.display = 'none';
@@ -1041,67 +976,52 @@ class trainers {
         let battleScreen = document.querySelector('#battleScreen')
         battleScreen.style.display = '';
 
-        // let textBox = document.createElement('div')
-        // battleScreen.append(textBox)
-        // let welcomeText = document.createElement('h1')
-        // welcomeText.innerHTML = "Welcome to Pokemon Arena! Let's Battle!";
-        // battleScreen.append(welcomeText)
 
         let gameTextBox = document.querySelector('#gameText')
         
 
         this.bg.push(this.pokemonParty[0])
         this.bg.push(this.computerParty[0])
-        // this.computerParty.pop()
 
 
         // Displays Health
         let cpuHealth = document.querySelector('#cpuHealth')
-        cpuHealth.style.marginLeft = '600px'
+        cpuHealth.style.marginLeft = '60%'
         cpuHealth.style.fontSize = '30px'
+        cpuHealth.style.marginTop = '10%'
         cpuHealth.innerHTML = `${this.bg[1].name.toUpperCase()}: ${this.bg[1].HP} HP`
 
-        // let cpuSpriteField = document.querySelector('#cpuSprite')
+
         let cpuSprite = document.querySelector('#cpuSpritePic')
         cpuSprite.src = `${this.bg[1].frontImage}`
-        cpuSprite.style.width = '300px'
-        cpuSprite.style.height = '300px'
-        cpuSprite.style.marginLeft = '600px'
-        // cpuSpriteField.append(cpuSprite)
+        cpuSprite.style.width = '400px'
+        cpuSprite.style.height = '400px'
+        cpuSprite.style.marginLeft = '60%'
+        cpuSprite.style.marginTop = '5%'
+
 
         let userHealth = document.querySelector('#userHealth')
         userHealth.style.fontSize = '30px'
+        userHealth.style.marginLeft = '2%'
         userHealth.innerHTML = `${this.bg[0].name.toUpperCase()}: ${this.bg[0].HP} HP`
 
-        // let userSpriteField = document.querySelector('#userSprite')
+
         let userSprite = document.querySelector('#userSpritePic')
         userSprite.src = `${this.bg[0].backImage}`
-        userSprite.style.width = '300px'
-        userSprite.style.height = '300px'
+        userSprite.style.width = '400px'
+        userSprite.style.height = '400px'
+        userSprite.margin = '50%'
 
 
-        // let introCPUText = document.createElement('p')
-        // introCPUText.innerHTML = `CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`
-        // gameTextBox.append(introCPUText)
+
 
         alert(`CPU wants to battle!`)
         alert(`CPU sent out ${this.bg[1].name.toUpperCase()}`)
-
-            // let introUserText = document.createElement('p')
-            // introUserText.innerHTML = `Go! ${this.pokemonParty[0].name.toUpperCase()}!`
-            // gameTextBox.append(introUserText)
-
-
         alert(`Go! ${this.pokemonParty[0].name.toUpperCase()}!`)
-
-
-        console.log(this.bg)
-        console.log(`CPU wants to battle!\nCPU sent out ${this.bg[1].name.toUpperCase()}`)
-        console.log(`Go! ${this.pokemonParty[0].name.toUpperCase()}!`)
-        console.log(`${this.bg[0].name} HP: ${this.bg[0].HP} \n${this.bg[1].name} HP: ${this.bg[1].HP}`)
 
         this.optionsScreen()
     }
+
 }
 
 
@@ -1110,18 +1030,17 @@ class trainers {
 
 const jrk = new trainers('User')
 
-
+let welcomePage = document.querySelector('#selectScreen')
 
 
 // Grabs Pokemon Data from PokeAPI
 pokemon = [];
-const N = 151;
+const N = 386;
 let pokemonList = Array.from({length: N}, (_, index) => index + 1);
 pokemonList.map(function(pokeName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
     .then(res => res.json())
     .then((res) => {
-    //   console.log(res)
       pokemon.push({
       name: res.name,
       type: res.types[0].type.name,
@@ -1136,7 +1055,7 @@ pokemonList.map(function(pokeName) {
     }).catch((err) => console.log('Please enter a valid pokemon'))  
 })
 
-// all avialable moves in the game
+// All avialable moves in the series
 allMovesList = [];
 async function getMoves() {
          
@@ -1153,6 +1072,7 @@ alert('Welcome to Pokemon Battle Arena by JRK!')
 
 
 console.log(pokemon)
+
 
 // import this
 let TYPE_CHART = {
@@ -1502,9 +1422,9 @@ navBar.append(selectYourPokemonBtn)
 selectYourPokemonBtn.addEventListener('click', function(e) {
 
     setTimeout(jrk.selectUserPokemon(), 5000)
-    // jrk.selectUserPokemon()
+
     setTimeout(jrk.selectCPUPokemon(), 6000)
-    // jrk.selectCPUPokemon()
+
 
 })
 

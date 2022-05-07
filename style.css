@@ -1,44 +1,59 @@
 
-button {
-  width: 50px;
-  display:grid;
-  grid-column: 1fr 1fr 1fr;
-  border: 1px solid red;
-  justify-content: center;
+
+body {
+  background-image: url('/pokemonWallpaper.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  /* width: 100%;
+  height: 100vh; */
 
 }
 
-#pokemonMoveList {
-  border: 1px solid red;
+
+#battleBackgroundScreen {
+  background-image: url('/pokemonBattleStage.png');
+  margin-right: 20%;
+  margin-left: 20%;
+  /* width: 50%; */
+  /* height; */
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+
+
+  /* margin: 70%; */
 }
 
-#userBar button {
-  background-color: #04AA6D; /* Green background */
-  border: 1px solid green; /* Green border */
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  width: 50%; /* Set a width if needed */
-  display: block; /* Make the buttons appear below each other */
-}
-
-#cpuBar button {
-  background-color: #04AA6D; /* Green background */
-  border: 1px solid green; /* Green border */
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  width: 50%; /* Set a width if needed */
-  display: block; /* Make the buttons appear below each other */
-}
-
-.userPokemonBtns {
-  display: grid;
-  grid-column: 1fr 1fr 1fr;
-  margin: 100px;
+#top-menu {
+  align-items: center;
 }
 
 
-#cpuSprite {
+#userPokemonButtons {
+  /* margin-right: 50px;
+  margin-left: 50px; */
+  margin: auto;
+}
 
+#cpuPokemonButtons {
+  /* margin-right: 50px;
+  margin-left: 50px; */
+  margin: auto;
+}
+
+#gameOptions {
+  /* margin-right: 700px;
+  margin-left: 800px; */
+  margin-bottom: 10%;
+}
+
+@media only screen and (max-width: 600px) {
+  #userSpritePic {
+    width: 50px
+  }
 }

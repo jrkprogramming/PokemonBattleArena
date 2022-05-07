@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="style.css">
     <title>Pokemon Battle Arena</title>
 </head>
 <body>
 
 
 <!-- Character Select Screen -->
+
 <div id="selectScreen">
 
     <nav id="top-menu"></nav>
@@ -35,7 +36,10 @@
 
 
 <!-- Battle Screen -->
+
 <div id="battleScreen">
+
+    <div id="battleBackgroundScreen">
 
     <div id="cpuHealth">cpuHealth</div>
     <div id="cpuSprite">
@@ -47,16 +51,20 @@
         <img id="userSpritePic">
     </div>
 
+    
     <div id="gameOptions">
         <button id="move0Btn"></button>
         <button id="move1Btn"></button>
         <button id="move2Btn"></button>
         <button id="move3Btn"></button>
     </div>
-
+    
     <div id="gameText"><i></i></div>
+    
+</div>
 
 </div>
+
 
 
     <script src="app.js"></script>
