@@ -4,6 +4,16 @@
 Project Description:
 My app is a Pokemon arena where a user can select 3 pokemon and choose 4 moves. The user can battle the pokemon they choose against a computer who randomly creates their team of pokemon. When a pokemon reaches 0 HP, the pokemon faints and the user has to choose the next pokemon to fight in the arena.
 
+Technologies Used:
+This project is written in HTML, CSS, and vanilla JavaScript
+
+Problems:
+
+
+![alt text](welcomeScreen.png)
+![alt text](selectScreen.png)
+![alt text](battleScreen.png)
+
 
 MVP Goals:
 
@@ -15,6 +25,13 @@ As a player, there should be a ‘RUN’ button that lets me quit and reset the 
 As a player, I should know how much HP is left on my Pokemon and my opponent’s.
 As a player, I should be able to choose which of the 4 moves I want to do per round.
 As a player, I want to know what element each move is (electric, fire, water, ground)
+
+Stretch Goals:
+- add dual types on pokemon
+- incorporate berries
+- incorporate special moves
+- user can change out pokemon
+- Pokedex feature that has all the data on every pokemon
 
 
 Unsolved Problems:
