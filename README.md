@@ -13,15 +13,15 @@ HTML, CSS, JSON, and JavaScript.
 
 Welcome screen where users can choose to select their Pokemon.
 
-![alt text](welcomeScreen.png)
+![alt text](assets/welcomeScreen.png)
 
 Pokemon will populate and user can choose which Pokemon and which moves they want to battle with/against. (Only Generations 1-3 are shown)
 
-![alt text](selectScreen.png)
+![alt text](assets/selectScreen.png)
 
 This is the battle screen where user can battle the CPU.
 
-![alt text](battleScreen.png)
+![alt text](assets/battleScreen.png)
 
 
 
