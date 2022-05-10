@@ -10,7 +10,7 @@ class trainers {
 
         let pokemonList = [];
  
-        const M = 386;
+        const M = 493;
         
         let userField = document.querySelector('#userBar')
 
@@ -216,7 +216,7 @@ class trainers {
 
         let pokemonList = [];
      
-        const M = 386;
+        const M = 493;
 
         let cpuField = document.querySelector('#cpuBar')
 
@@ -1045,7 +1045,7 @@ let welcomePage = document.querySelector('#selectScreen')
 
 // Grabs Pokemon Data from PokeAPI
 pokemon = [];
-const N = 386;
+const N = 493;
 let pokemonList = Array.from({length: N}, (_, index) => index + 1);
 pokemonList.map(function(pokeName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
