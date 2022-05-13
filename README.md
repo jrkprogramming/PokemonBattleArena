@@ -21,7 +21,7 @@ Pokemon will populate and user can choose which Pokemon and which moves they wan
 
 This is the battle screen where user can battle the CPU.
 
-![alt text](assets/battleScreen.png)
+![alt text](assets/battleScreen.png)td
 
 
 
