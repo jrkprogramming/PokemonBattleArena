@@ -1,7 +1,7 @@
 
 
 body {
-  background-image: url('./assets/pokemonWallpaper.png');
+  background-image: url('https://jrkprogramming.github.io/GA_project1/assets/pokemonWallpaper.png');
   background-position: center center;
   
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@ body {
 
 
 #battleBackgroundScreen {
-  background-image: url('./assets/pokemonBattleStage.png');
+  background-image: url('https://jrkprogramming.github.io/GA_project1/assets/pokemonBattleStage.png');
   margin-right: 20%;
   margin-left: 20%;
 
