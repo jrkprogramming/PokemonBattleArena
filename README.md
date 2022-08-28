@@ -11,7 +11,7 @@ HTML, CSS, JSON, and JavaScript.
 
 
 ### Deployed Link:
-https://jrkprogramming.github.io/GA_project1/
+https://jrkprogramming.github.io/PokemonBattleArena/
 
 
 ### <b>Screenshots:</b>
