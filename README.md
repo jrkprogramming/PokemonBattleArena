@@ -4,7 +4,7 @@
 ### Project Description:
 My app is a Pokemon arena where a user can select 3 pokemon and choose 4 moves. The user can battle the pokemon they choose and also choose the Pokemon and moves they go against. When a pokemon reaches 0 HP, the pokemon faints and the user sends out the next pokemon to fight in the arena. Once there is a winner or a loser, the site needs to be refreshed and the game will restart and User can select Pokemon again. (All Pokemon and moves are available)
 
-** Only the first 151 are displayed, but all 905 pokemon is available through the PokeAPI.
+** Only the first 151 pokemon may be displayed, but all 905 pokemon is available through the PokeAPI. If there are issues with the app, just refresh the app and click through the menu slowly so ensure the app loads properly.
 
 ### Technologies Used:
 HTML, CSS, JSON, and JavaScript.
