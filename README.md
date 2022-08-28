@@ -10,6 +10,10 @@ My app is a Pokemon arena where a user can select 3 pokemon and choose 4 moves. 
 HTML, CSS, JSON, and JavaScript.
 
 
+### Deployed Link:
+https://jrkprogramming.github.io/GA_project1/
+
+
 ### <b>Screenshots:</b>
 
 Welcome screen where users can choose to select their Pokemon.
