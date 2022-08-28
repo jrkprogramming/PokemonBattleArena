@@ -1,15 +1,16 @@
-<b>POKEMON ARENA GAME </b>
+### <b>POKEMON ARENA GAME </b>
 
 
-Project Description:
+### Project Description:
 My app is a Pokemon arena where a user can select 3 pokemon and choose 4 moves. The user can battle the pokemon they choose and also choose the Pokemon and moves they go against. When a pokemon reaches 0 HP, the pokemon faints and the user sends out the next pokemon to fight in the arena. Once there is a winner or a loser, the site needs to be refreshed and the game will restart and User can select Pokemon again. (All Pokemon and moves are available)
 
+** Only the first 151 are displayed, but all 905 pokemon is available through the PokeAPI.
 
-Technologies Used:
+### Technologies Used:
 HTML, CSS, JSON, and JavaScript.
 
 
-<b>Screenshots:</b>
+### <b>Screenshots:</b>
 
 Welcome screen where users can choose to select their Pokemon.
 
@@ -21,11 +22,11 @@ Pokemon will populate and user can choose which Pokemon and which moves they wan
 
 This is the battle screen where user can battle the CPU.
 
-![alt text](assets/battleScreen.png)td
+![alt text](assets/battleScreen.png)
 
 
 
-MVP Goals:
+### MVP:
 
 - As a player, I want to select the pokemon I want to use in battle.
 - As a player, I want to choose any Pokemon from the series.
@@ -35,7 +36,7 @@ MVP Goals:
 - As a player, I should be able to choose which of the 4 moves I want to do per round.
 
 
-Stretch Goals:
+### Stretch Goals:
 
 - Add dual types to pokemon
 - Add more stages.
@@ -49,9 +50,10 @@ Stretch Goals:
 - Add loading screen so that User can't try to access a Pokemon that hasn't fully loaded yet
 - Display Party buttons need styling
 - Pokedex feature that has all the data on every pokemon
+- Convert Frontend to React
 
 
-Major Hurdles:
+### Major Hurdles:
 
 - Manipulating data within a class and making sure to carry the data throughout the methods as intended was tricky.
 - A lot of the times, the fetched data from the PokeAPI would return undefined so I had to play with code to get it to work.
@@ -62,3 +64,5 @@ Major Hurdles:
 - Didn't have a lot of practice with the DOM and CSS, so adding those elements to my game was a bit of a challenge.
 - The PokeAPI having all the data really made things easy, the hard part was accessing the data and being able to maniulate them and interacting with them.
 - Before having buttons for everything, I used prompts to get input from the user. The user would have to type in which Pokemon they wanted to add to their party and type which moves they wanted. Creating buttons was an obvious, important feature. (And as you can tell it was a pain to test before having buttons.)
+- The app needs time to load. User need to click through the menu slowly or some things may not load right.
+- Sometimes only 1 move list boxes will load when selecting a pokemon.
